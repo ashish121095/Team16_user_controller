@@ -94,8 +94,7 @@
     <Link>
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
+      <EntryPointSymbol>main</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -135,9 +134,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="page1.cpp" />
+    <ClCompile Include="page3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="page1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="page3.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>

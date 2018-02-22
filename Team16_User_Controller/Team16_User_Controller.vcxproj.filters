@@ -18,10 +18,21 @@
     <ClCompile Include="page1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="page3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="page1.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="page3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="page1.resx">
+      <Filter>Resource Files</Filter>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>
