@@ -10,7 +10,7 @@ namespace Team16UserController {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
-
+	 
 	/// <summary>
 	/// Summary for page1
 	/// </summary>
@@ -22,7 +22,7 @@ namespace Team16UserController {
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
-			std::vector<String>HSigns;
+		//	std::vector<String>HSigns;
 			//
 		}
 
@@ -40,7 +40,9 @@ namespace Team16UserController {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Label^  Instruction;
+	protected:
+
 
 
 	private:
@@ -56,33 +58,31 @@ namespace Team16UserController {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->Instruction = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
-			// label1
+			// Instruction
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Instruction->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(191, 38);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(353, 29);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Potential List of Heat Signatures";
-			this->label1->Click += gcnew System::EventHandler(this, &page1::label1_Click_1);
+			this->Instruction->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->Instruction->Location = System::Drawing::Point(83, 35);
+			this->Instruction->Name = L"Instruction";
+			this->Instruction->Size = System::Drawing::Size(599, 64);
+			this->Instruction->TabIndex = 0;
+			this->Instruction->Text = L"Instruction: Please enter the Search GPS coordinates in the input boxes provided."
+				L" ";
+			this->Instruction->Click += gcnew System::EventHandler(this, &page1::label1_Click_1);
 			// 
 			// page1
-			
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(746, 365);
-			this->Controls->Add(this->label1);
+			this->ClientSize = System::Drawing::Size(746, 403);
+			this->Controls->Add(this->Instruction);
 			this->Name = L"page1";
 			this->Text = L"Heat Signatures";
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion
