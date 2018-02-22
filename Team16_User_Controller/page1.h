@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-
+#include "page3.h"
 namespace Team16UserController {
 
 	using namespace System;
@@ -41,6 +41,7 @@ namespace Team16UserController {
 			}
 		}
 	private: System::Windows::Forms::Label^  Instruction;
+	private: System::Windows::Forms::Button^  button1;
 	protected:
 
 
@@ -59,6 +60,7 @@ namespace Team16UserController {
 		void InitializeComponent(void)
 		{
 			this->Instruction = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// Instruction
@@ -74,11 +76,22 @@ namespace Team16UserController {
 				L" ";
 			this->Instruction->Click += gcnew System::EventHandler(this, &page1::label1_Click_1);
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(312, 273);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(106, 36);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"Next Page";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &page1::button1_Click);
+			// 
 			// page1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(746, 403);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Instruction);
 			this->Name = L"page1";
 			this->Text = L"Heat Signatures";
@@ -90,6 +103,12 @@ namespace Team16UserController {
 	private: System::Void label1_Click_1(System::Object^  sender, System::EventArgs^  e) {
 
 		
+	}
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->Hide();
+		page3 ^obj3 = gcnew page3();
+		obj3->ShowDialog();
+
 	}
 	};
 }
