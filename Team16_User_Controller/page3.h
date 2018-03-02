@@ -1,5 +1,5 @@
 #pragma once
-
+#using <System.dll>
 namespace Team16UserController {
 
 	using namespace System;
@@ -8,14 +8,34 @@ namespace Team16UserController {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Collections::Generic;
 
 
 	/// <summary>
 	/// Summary for page3
 	/// </summary>
+
+	public ref class node:System::Collections::Generic::LinkedList<String^> {
+		
+	private:
+		String ^ gps;
+		String^ time;
+		String^ altitude;
+		String^ speed;
+		node^ next;
+		node();
+		node(String^, String^, String^, String^);
+
+
+
+		//LinkedList <String^> droneData = gcnew LinkedList<String^>(gps,time,altitude,speed);
+		//void addData(String^, String^, String^, String^);
+		
+	};
 	public ref class page3 : public System::Windows::Forms::Form
 	{
 	public:
+		
 		page3(void)
 		{
 			InitializeComponent();
@@ -23,6 +43,8 @@ namespace Team16UserController {
 			//TODO: Add the constructor code here
 			//
 		}
+		//overload constructor
+		page3(System::String ^, System::String ^, System::String ^, System::String ^);
 
 	protected:
 		/// <summary>
@@ -35,7 +57,16 @@ namespace Team16UserController {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^  label1;
+	private: 
+		System::Windows::Forms::Label^  label1;
+		
+		//drone data to be displayed
+		/*System::String^ time;
+		System::String^ gps;
+		System::String^ speed;
+		System::String^ altitude;*/
+
+
 	protected:
 
 	private:
@@ -80,5 +111,12 @@ namespace Team16UserController {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
+	
+
+			 void readFromFile(String^);
+
+			/* void addData(String^, String^, String^, String^);*/
+	
+
 	};
 }
