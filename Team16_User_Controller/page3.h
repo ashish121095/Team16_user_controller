@@ -1,5 +1,6 @@
 #pragma once
-#using <System.dll>
+#include <vector>
+//#using <System.dll>
 namespace Team16UserController {
 
 	using namespace System;
@@ -17,14 +18,17 @@ namespace Team16UserController {
 
 	public ref class node:System::Collections::Generic::LinkedList<String^> {
 		
-	private:
+	public:
+		//vector<LinkedList<String^>> val = new vector<int>;
+		//vector<LinkedList<String^>> val;
 		String ^ gps;
 		String^ time;
 		String^ altitude;
 		String^ speed;
 		node^ next;
-		node();
-		node(String^, String^, String^, String^);
+		node(void);
+		node(System::String ^, System::String ^, System::String ^, System::String ^);
+		~node();
 
 
 

@@ -33,7 +33,7 @@ void Team16UserController::page3::readFromFile(System::String ^ str)
 //
 //}
 //
-Team16UserController::node::node() {
+Team16UserController::node::node(void) {
 	gps = nullptr;
 	speed = nullptr;
 	time = nullptr;
@@ -45,6 +45,11 @@ Team16UserController::node::node(System::String ^ dtime, System::String ^ dGps, 
 	time = dtime;
 	speed = dSpeed;;
 	altitude = dAltitude;
+}
+
+Team16UserController::node::~node()
+{
+	throw gcnew System::NotImplementedException();
 }
 
 
