@@ -1,5 +1,6 @@
 #pragma once
-#include <vector>
+#include <string>
+#include <cliext\vector>
 //#using <System.dll>
 namespace Team16UserController {
 
@@ -117,7 +118,7 @@ namespace Team16UserController {
 	}
 	
 
-			 void readFromFile(String^);
+			 void readFromFile(System::String^ , cliext:: vector<Team16UserController::node^>v);
 
 			/* void addData(String^, String^, String^, String^);*/
 	

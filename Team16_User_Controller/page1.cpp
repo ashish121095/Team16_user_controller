@@ -8,7 +8,6 @@ using namespace std;
 [STAThreadAttribute]
 int main(cli::array < System::String^ > ^ args) {
 	
-	//Team16UserController::page3 p3("ads", "asddf", "wer", "ga");
 
 	Team16UserController::node^ n = gcnew Team16UserController::node("asds", "asddf", "wer", "ga");
 	

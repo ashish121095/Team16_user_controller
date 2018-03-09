@@ -1,5 +1,5 @@
 #include "page3.h"
-#include <vector>
+#include <cliext\vector>
 #include <string>
 
 using namespace std;
@@ -12,27 +12,12 @@ Team16UserController::page3::page3(System::String ^ dtime, System::String ^ dGps
 	altitude = dAltitude;*/
 }
 
-//function to read data from a file
-void Team16UserController::page3::readFromFile(System::String ^ filename)
+void Team16UserController::page3::readFromFile(System::String ^ filename, cliext::vector<Team16UserController::node^>v)
 {
-
+	throw gcnew System::NotImplementedException();
 }
-//
-//list::list() {
-//	node* next = NULL;
-//}
-//
-//void list::addData(string dTime, string dGps, string dSpeed, string dAltitude) {
-//	
-//	node *newNode = new node;
-//	newNode->time = dTime;
-//	newNode->gps = dGps;
-//	newNode->speed= dSpeed;
-//	newNode->altitude= dAltitude;
-//	newNode->next= NULL;
-//
-//}
-//
+
+
 Team16UserController::node::node(void) {
 	gps = nullptr;
 	speed = nullptr;
@@ -62,3 +47,20 @@ Team16UserController::node::~node()
 //
 //
 //}
+//function to read data from a file
+//
+//list::list() {
+//	node* next = NULL;
+//}
+//
+//void list::addData(string dTime, string dGps, string dSpeed, string dAltitude) {
+//	
+//	node *newNode = new node;
+//	newNode->time = dTime;
+//	newNode->gps = dGps;
+//	newNode->speed= dSpeed;
+//	newNode->altitude= dAltitude;
+//	newNode->next= NULL;
+//
+//}
+//
