@@ -38,4 +38,7 @@
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="tempData.txt" />
+  </ItemGroup>
 </Project>

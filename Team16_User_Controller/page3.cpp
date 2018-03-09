@@ -13,9 +13,9 @@ Team16UserController::page3::page3(System::String ^ dtime, System::String ^ dGps
 }
 
 //function to read data from a file
-void Team16UserController::page3::readFromFile(System::String ^ str)
+void Team16UserController::page3::readFromFile(System::String ^ filename)
 {
-	throw gcnew System::NotImplementedException();
+
 }
 //
 //list::list() {
