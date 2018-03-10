@@ -25,28 +25,21 @@ void Team16UserController::page3::readFromFile(System::String ^ filename, cliext
 
 	String^ line;
 	int count = 0;
-	while ((line = inputFile->ReadLine())!=nullptr)
-	{
-		Team16UserController::node^ node = gcnew Team16UserController::node("fgh","wer","sdfg","asd");
-		count++;
-		Console::WriteLine("line {0}: {1}",count,line);
-	
-	}
-	/*catch (Exception^ e)
-	{
-		if (dynamic_cast<FileNotFoundException^>(e))
-			Console::WriteLine("file '{0}' not found", fileName);
-		else
-			Console::WriteLine("problem reading file '{0}'", fileName);
-	}*/
+	line = inputFile->ReadLine();
 
+	//Button
+	//while ((line = inputFile->ReadLine())!=nullptr)
+	//{
+	//	Team16UserController::node^ node = gcnew Team16UserController::node("fgh","wer","sdfg","asd");
+	//	
+	//}
+	
 }
 
 cli::array<System::String^>^ Team16UserController::page3::readEachLine(System::String^ line)
 {
 	//cliext::vector<System::String^>vec;
-	cli::array<String^>^ strarray;
-		//= gcnew array<String>(4);
+	cli::array<String^>^ strarray= gcnew cli::array<String^>(4);
 
 	return strarray;
 }
