@@ -1,20 +1,44 @@
 #include "page3.h"
 #include <cliext\vector>
 #include <string>
+#using <System.dll>
 
+using namespace System::IO;
 using namespace std;
 //still unsure if I need this or not
-Team16UserController::page3::page3(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude)
-{
-	/*time = dtime;
-	gps = dGps;
-	speed = dSpeed;
-	altitude = dAltitude;*/
-}
+//Team16UserController::page3::page3(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude)
+//{
+//	/*time = dtime;
+//	gps = dGps;
+//	speed = dSpeed;
+//	altitude = dAltitude;*/
+//}
 
+//Team16UserController::page3::page3() {
+
+//}
 void Team16UserController::page3::readFromFile(System::String ^ filename, cliext::vector<Team16UserController::node^>v)
 {
-	throw gcnew System::NotImplementedException();
+
+	StreamReader^ inputFile = File::OpenText(filename);
+	Console::WriteLine("trying to open file {0}...", filename);
+
+	String^ line;
+	int count = 0;
+	while ((line = inputFile->ReadLine())!=nullptr)
+	{
+		count++;
+		Console::WriteLine("line {0}: {1}",count,line);
+	
+	}
+	/*catch (Exception^ e)
+	{
+		if (dynamic_cast<FileNotFoundException^>(e))
+			Console::WriteLine("file '{0}' not found", fileName);
+		else
+			Console::WriteLine("problem reading file '{0}'", fileName);
+	}*/
+
 }
 
 

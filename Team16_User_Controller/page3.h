@@ -49,8 +49,10 @@ namespace Team16UserController {
 			//
 		}
 		//overload constructor
-		page3(System::String ^, System::String ^, System::String ^, System::String ^);
+		//page3(System::String ^, System::String ^, System::String ^, System::String ^);
+		/*page3() {
 
+		}*/
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -118,7 +120,7 @@ namespace Team16UserController {
 	}
 	
 
-			 void readFromFile(System::String^ , cliext:: vector<Team16UserController::node^>v);
+			 void readFromFile(System::String^ , cliext::vector<Team16UserController::node^>v);
 
 			/* void addData(String^, String^, String^, String^);*/
 	
