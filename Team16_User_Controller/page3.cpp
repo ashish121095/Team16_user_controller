@@ -26,7 +26,7 @@ void Team16UserController::page3::readFromFile(System::String ^ filename, cliext
 	String^ line;
 	int count = 0;
 	line = inputFile->ReadLine();
-
+	 
 	//Button
 	//while ((line = inputFile->ReadLine())!=nullptr)
 	//{
