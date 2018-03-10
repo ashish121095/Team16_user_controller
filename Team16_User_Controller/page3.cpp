@@ -1,8 +1,8 @@
 #include "page3.h"
 #include <cliext\vector>
-#include <string>
 #using <System.dll>
-
+#include <string>
+#define ARRAY_SIZE 4;
 using namespace System::IO;
 using namespace std;
 //still unsure if I need this or not
@@ -27,6 +27,7 @@ void Team16UserController::page3::readFromFile(System::String ^ filename, cliext
 	int count = 0;
 	while ((line = inputFile->ReadLine())!=nullptr)
 	{
+		Team16UserController::node^ node = gcnew Team16UserController::node("fgh","wer","sdfg","asd");
 		count++;
 		Console::WriteLine("line {0}: {1}",count,line);
 	
@@ -39,6 +40,15 @@ void Team16UserController::page3::readFromFile(System::String ^ filename, cliext
 			Console::WriteLine("problem reading file '{0}'", fileName);
 	}*/
 
+}
+
+cli::array<System::String^>^ Team16UserController::page3::readEachLine(System::String^ line)
+{
+	//cliext::vector<System::String^>vec;
+	cli::array<String^>^ strarray;
+		//= gcnew array<String>(4);
+
+	return strarray;
 }
 
 

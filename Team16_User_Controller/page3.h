@@ -1,7 +1,13 @@
 #pragma once
-#include <string>
 #include <cliext\vector>
-//#using <System.dll>
+#include<vector>
+#using <System.dll>
+#include <string>
+#include<array>
+
+using namespace System::IO;
+using namespace std;
+
 namespace Team16UserController {
 
 	using namespace System;
@@ -11,6 +17,7 @@ namespace Team16UserController {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace System::Collections::Generic;
+	//using namespace System::Array;
 
 
 	/// <summary>
@@ -122,8 +129,8 @@ namespace Team16UserController {
 
 			 void readFromFile(System::String^ , cliext::vector<Team16UserController::node^>v);
 
-			/* void addData(String^, String^, String^, String^);*/
-	
+			 //cliext::vector<System::String^> readline(System::String^);
 
+			 cli::array<System::String^>^ readEachLine(System::String^);
 	};
 }
