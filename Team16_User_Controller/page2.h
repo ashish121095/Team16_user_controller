@@ -139,9 +139,9 @@ namespace Team16UserController {
 		}
 #pragma endregion
 private: System::Void NextPage_2_Click(System::Object^  sender, System::EventArgs^  e) {
-	this->Hide();
+	/*this->Hide();
 	page3 ^obj3 = gcnew page3();
-	obj3->ShowDialog();
+	obj3->ShowDialog();*/
 }
 };
 }

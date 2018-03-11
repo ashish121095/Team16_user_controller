@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "page2.h"
+
 #include "page3.h"
 #include <fstream>
 #include <string>
@@ -215,9 +215,9 @@ namespace Team16UserController {
 #pragma endregion
 
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->Hide();
+		/*this->Hide();
 		page2 ^obj2 = gcnew page2();
-		obj2->ShowDialog();
+		obj2->ShowDialog();*/
 
 	}
 
