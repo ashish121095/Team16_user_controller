@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include "page2.h"
 #include "page3.h"
 #include <fstream>
 #include <string>
@@ -215,8 +216,8 @@ namespace Team16UserController {
 
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Hide();
-		page3 ^obj3 = gcnew page3();
-		obj3->ShowDialog();
+		page2 ^obj2 = gcnew page2();
+		obj2->ShowDialog();
 
 	}
 
@@ -226,7 +227,7 @@ namespace Team16UserController {
 	
 	private: System::Void Populate_Click(System::Object^  sender, System::EventArgs^  e) {
 		std::string coord;
-		int count;
+		int count = 0;
 		ifstream inFile ("StartCoords.txt");
 		if (inFile.is_open()) {
 			while (getline(inFile, coord) && count <2)
