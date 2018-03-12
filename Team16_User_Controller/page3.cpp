@@ -52,6 +52,7 @@ void Team16UserController::node::readFromFile(std::string filename, cliext::vect
 		n->altitude = eachLineData[3];
 
 		v.push_back(n);
+		eachLineData.clear();
 	}
 }
 
