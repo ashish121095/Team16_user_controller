@@ -9,11 +9,14 @@ using namespace std;
 [STAThreadAttribute]
 int main(cli::array < System::String^ > ^ args) {
 	
-
-	Team16UserController::node^ n = gcnew Team16UserController::node("asds", "asddf", "wer", "ga");
-	
-	//vector with pointer to point 
-	cliext:: vector<Team16UserController::node^>v;
+	Application::EnableVisualStyles();
+	Application::SetCompatibleTextRenderingDefault(false);
+	Team16UserController::page1 form;
+	Application::Run(%form);
+	//Team16UserController::node^ n = gcnew Team16UserController::node("asds", "asddf", "wer", "ga");
+	//
+	////vector with pointer to point 
+	//cliext:: vector<Team16UserController::node^>v;
 	
 	//Team16UserController::page3^ p = gcnew Team16UserController::page3();
 
@@ -31,11 +34,8 @@ int main(cli::array < System::String^ > ^ args) {
 
 	//}
 	//create a node to push at the end of the vector
-	v.push_back(n);
-	Application::EnableVisualStyles();
-	Application::SetCompatibleTextRenderingDefault(false);
-	Team16UserController::page1 form;
-	Application::Run(%form);
+	//v.push_back(n);
+	
 
 	return 0;
 }

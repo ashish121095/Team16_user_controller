@@ -1,9 +1,11 @@
+
+
 #pragma once
-#include <cliext\vector>
+//#include "page1.h"
 #include<vector>
-#using <System.dll>
-#include <string>
-#include<array>
+#include"page3_node.h"
+//#using <System.dll>
+//#include "stdafx.h"
 
 using namespace System::IO;
 using namespace std;
@@ -23,31 +25,12 @@ namespace Team16UserController {
 	/// <summary>
 	/// Summary for page3
 	/// </summary>
-
-	public ref class node:System::Collections::Generic::LinkedList<String^> {
-		
-	public:
-		//vector<LinkedList<String^>> val = new vector<int>;
-		//vector<LinkedList<String^>> val;
-		String ^ gps;
-		String^ time;
-		String^ altitude;
-		String^ speed;
-		node^ next;
-		node(void);
-		node(System::String ^, System::String ^, System::String ^, System::String ^);
-		~node();
-
-
-
-		//LinkedList <String^> droneData = gcnew LinkedList<String^>(gps,time,altitude,speed);
-		//void addData(String^, String^, String^, String^);
-		
-	};
+	
+	
 	public ref class page3 : public System::Windows::Forms::Form
 	{
 	public:
-		
+		//node n;
 		page3(void)
 		{
 			InitializeComponent();
@@ -55,11 +38,7 @@ namespace Team16UserController {
 			//TODO: Add the constructor code here
 			//
 		}
-		//overload constructor
-		//page3(System::String ^, System::String ^, System::String ^, System::String ^);
-		/*page3() {
-
-		}*/
+		
 	protected:
 		/// <summary>
 		/// Clean up any resources being used.
@@ -71,15 +50,8 @@ namespace Team16UserController {
 				delete components;
 			}
 		}
-	private: 
+	private:
 		System::Windows::Forms::Label^  label1;
-		
-		//drone data to be displayed
-		/*System::String^ time;
-		System::String^ gps;
-		System::String^ speed;
-		System::String^ altitude;*/
-
 
 	protected:
 
@@ -88,6 +60,8 @@ namespace Team16UserController {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+	private: System::Windows::Forms::Button^  button1;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -97,6 +71,7 @@ namespace Team16UserController {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -121,16 +96,72 @@ namespace Team16UserController {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			this->button1->Location = System::Drawing::Point(312, 273);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(106, 36);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"just checking";
+			this->button1->UseVisualStyleBackColor = true;
+			/*this->button1->Click += gcnew System::EventHandler(this, &page3::button1_Click);
+			
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(746, 403);
+			this->Controls->Add(this->button1);
+			this->Name = L"page3";
+			this->Text = L"List of Heat Signatures";
+			this->ResumeLayout(false);*/
 		}
 #pragma endregion
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	
 
-			 void readFromFile(System::String^ , cliext::vector<Team16UserController::node^>v);
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		/*this->Hide();
+		page1 ^obj1 = gcnew page1();
+		obj1->ShowDialog();
+*/
+	}
 
-			 //cliext::vector<System::String^> readline(System::String^);
 
-			 cli::array<System::String^>^ readEachLine(System::String^);
+
+			 //////cliext::vector<System::String^> readline(System::String^);
+
+			 //void readfromfile(System::String ^ filename, cliext::vector<Team16UserController::node^> v);
+
+			 //cli::array<system::string^>^ readeachline(system::string^);
 	};
+	
+	//}
+	//inline void Team16UserController::page3::readFromFile(System::String^filename, cliext::vector<Team16UserController::node^>v)
+	//{
+
+	//	StreamReader^ inputFile = File::OpenText(filename);
+
+	//	String^ line;
+	//	int count = 0;
+	//	line = inputFile->ReadLine();
+
+	//	//Button
+	//	//while ((line = inputFile->ReadLine())!=nullptr)
+	//	//{
+	//	//	Team16UserController::node^ node = gcnew Team16UserController::node("fgh","wer","sdfg","asd");
+	//	//	
+	//	//}
+
+	//}
+
+	//////cliext::vector<System::String^> readline(System::String^);
+
+	//cli::array<System::String^>^ readEachLine(System::String^);
 }
+
+
+
+
+
+
+
+
+
+
