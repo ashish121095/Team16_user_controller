@@ -2,7 +2,7 @@
 
 #include <vector>
 
-#include "page3.h"
+#include "page2.h"
 #include <fstream>
 #include <string>
 namespace Team16UserController {
@@ -45,7 +45,8 @@ namespace Team16UserController {
 			}
 		}
 	private: System::Windows::Forms::Label^  Instruction;
-	private: System::Windows::Forms::Button^  NextPage;
+	private: System::Windows::Forms::Button^  Next2;
+
 
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
@@ -88,7 +89,7 @@ namespace Team16UserController {
 		void InitializeComponent(void)
 		{
 			this->Instruction = (gcnew System::Windows::Forms::Label());
-			this->NextPage = (gcnew System::Windows::Forms::Button());
+			this->Next2 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->SearchCW = (gcnew System::Windows::Forms::TextBox());
@@ -111,15 +112,15 @@ namespace Team16UserController {
 			this->Instruction->Text = L"Instruction: Please enter the Search GPS coordinates in the input boxes provided "
 				L"in Decimal Degree Format. ";
 			// 
-			// NextPage
+			// Next2
 			// 
-			this->NextPage->Location = System::Drawing::Point(457, 207);
-			this->NextPage->Name = L"NextPage";
-			this->NextPage->Size = System::Drawing::Size(106, 35);
-			this->NextPage->TabIndex = 1;
-			this->NextPage->Text = L"Next Page";
-			this->NextPage->UseVisualStyleBackColor = true;
-			this->NextPage->Click += gcnew System::EventHandler(this, &page1::NextPage_Click);
+			this->Next2->Location = System::Drawing::Point(457, 207);
+			this->Next2->Name = L"Next2";
+			this->Next2->Size = System::Drawing::Size(106, 35);
+			this->Next2->TabIndex = 1;
+			this->Next2->Text = L"Next Page";
+			this->Next2->UseVisualStyleBackColor = true;
+			this->Next2->Click += gcnew System::EventHandler(this, &page1::NextPage_Click);
 			// 
 			// label1
 			// 
@@ -204,7 +205,7 @@ namespace Team16UserController {
 			this->Controls->Add(this->SearchCN);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->NextPage);
+			this->Controls->Add(this->Next2);
 			this->Controls->Add(this->Instruction);
 			this->Name = L"page1";
 			this->Text = L"Heat Signatures";
@@ -219,6 +220,7 @@ namespace Team16UserController {
 		this->Hide();
 		page3 ^obj3 = gcnew page3();
 		obj3->ShowDialog();
+
 	}
 
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {
