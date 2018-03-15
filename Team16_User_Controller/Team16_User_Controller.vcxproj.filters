@@ -21,6 +21,9 @@
     <ClCompile Include="page3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="page2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="page1.h">
@@ -30,6 +33,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="page3_node.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="page2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

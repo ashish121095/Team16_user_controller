@@ -138,10 +138,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="page1.cpp" />
+    <ClCompile Include="page2.cpp" />
     <ClCompile Include="page3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="page1.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="page2.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="page3.h">
@@ -153,8 +157,8 @@
     <EmbeddedResource Include="page1.resx">
       <DependentUpon>page1.h</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="page3.resx">
-      <DependentUpon>page3.h</DependentUpon>
+    <EmbeddedResource Include="page2.resx">
+      <DependentUpon>page2.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

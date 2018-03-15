@@ -218,8 +218,8 @@ namespace Team16UserController {
 
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Hide();
-		page3 ^obj3 = gcnew page3();
-		obj3->ShowDialog();
+		page2 ^obj2 = gcnew page2();
+		obj2->ShowDialog();
 
 	}
 
