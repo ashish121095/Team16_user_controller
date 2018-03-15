@@ -1,6 +1,5 @@
 #pragma once
 
-#include <vector>
 #include "page3.h"
 namespace Team16UserController {
 
@@ -36,12 +35,15 @@ namespace Team16UserController {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::Label^  label1;
-	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::Label^  label3;
-	private: System::Windows::Forms::TextBox^  VideoLoc;
-	private: System::Windows::Forms::TextBox^  GPSLoc;
-	private: System::Windows::Forms::Button^  NextPage_2;
+	private: System::Windows::Forms::Button^  Next3;
+	private: System::Windows::Forms::Label^  Instruction2;
+	private: System::Windows::Forms::Label^  VideoLabel;
+	private: System::Windows::Forms::Label^  GPSLabel;
+	private: System::Windows::Forms::TextBox^  VideoInput;
+	private: System::Windows::Forms::TextBox^  GPSInput;
+
+
+	protected:
 
 	protected:
 
@@ -58,79 +60,78 @@ namespace Team16UserController {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->VideoLoc = (gcnew System::Windows::Forms::TextBox());
-			this->GPSLoc = (gcnew System::Windows::Forms::TextBox());
-			this->NextPage_2 = (gcnew System::Windows::Forms::Button());
+			this->Next3 = (gcnew System::Windows::Forms::Button());
+			this->Instruction2 = (gcnew System::Windows::Forms::Label());
+			this->VideoLabel = (gcnew System::Windows::Forms::Label());
+			this->GPSLabel = (gcnew System::Windows::Forms::Label());
+			this->VideoInput = (gcnew System::Windows::Forms::TextBox());
+			this->GPSInput = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
-			// label1
+			// Next3
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->Next3->Location = System::Drawing::Point(487, 248);
+			this->Next3->Name = L"Next3";
+			this->Next3->Size = System::Drawing::Size(106, 35);
+			this->Next3->TabIndex = 9;
+			this->Next3->Text = L"Next Page";
+			this->Next3->UseVisualStyleBackColor = true;
+			this->Next3->Click += gcnew System::EventHandler(this, &page2::Save_Click);
+			// 
+			// Instruction2
+			// 
+			this->Instruction2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			this->label1->Location = System::Drawing::Point(12, 9);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(398, 29);
-			this->label1->TabIndex = 0;
-			this->label1->Text = L"Instruction: Input Video and Text file ";
+			this->Instruction2->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			this->Instruction2->Location = System::Drawing::Point(47, 18);
+			this->Instruction2->Name = L"Instruction2";
+			this->Instruction2->Size = System::Drawing::Size(499, 36);
+			this->Instruction2->TabIndex = 10;
+			this->Instruction2->Text = L"Instruction: input GPS and video file locations";
 			// 
-			// label2
+			// VideoLabel
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 81);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(102, 17);
-			this->label2->TabIndex = 1;
-			this->label2->Text = L"Video Location";
+			this->VideoLabel->AutoSize = true;
+			this->VideoLabel->Location = System::Drawing::Point(71, 89);
+			this->VideoLabel->Name = L"VideoLabel";
+			this->VideoLabel->Size = System::Drawing::Size(128, 17);
+			this->VideoLabel->TabIndex = 11;
+			this->VideoLabel->Text = L"Video File Location";
 			// 
-			// label3
+			// GPSLabel
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(12, 130);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(95, 17);
-			this->label3->TabIndex = 2;
-			this->label3->Text = L"GPS Location";
+			this->GPSLabel->AutoSize = true;
+			this->GPSLabel->Location = System::Drawing::Point(71, 151);
+			this->GPSLabel->Name = L"GPSLabel";
+			this->GPSLabel->Size = System::Drawing::Size(121, 17);
+			this->GPSLabel->TabIndex = 12;
+			this->GPSLabel->Text = L"GPS File Location";
 			// 
-			// VideoLoc
+			// VideoInput
 			// 
-			this->VideoLoc->Location = System::Drawing::Point(143, 81);
-			this->VideoLoc->Name = L"VideoLoc";
-			this->VideoLoc->Size = System::Drawing::Size(386, 22);
-			this->VideoLoc->TabIndex = 3;
+			this->VideoInput->Location = System::Drawing::Point(229, 90);
+			this->VideoInput->Name = L"VideoInput";
+			this->VideoInput->Size = System::Drawing::Size(282, 22);
+			this->VideoInput->TabIndex = 13;
 			// 
-			// GPSLoc
+			// GPSInput
 			// 
-			this->GPSLoc->Location = System::Drawing::Point(143, 127);
-			this->GPSLoc->Name = L"GPSLoc";
-			this->GPSLoc->Size = System::Drawing::Size(386, 22);
-			this->GPSLoc->TabIndex = 4;
-			// 
-			// NextPage_2
-			// 
-			this->NextPage_2->Location = System::Drawing::Point(423, 264);
-			this->NextPage_2->Name = L"NextPage_2";
-			this->NextPage_2->Size = System::Drawing::Size(106, 35);
-			this->NextPage_2->TabIndex = 5;
-			this->NextPage_2->Text = L"Next Page";
-			this->NextPage_2->UseVisualStyleBackColor = true;
-			this->NextPage_2->Click += gcnew System::EventHandler(this, &page2::NextPage_2_Click);
+			this->GPSInput->Location = System::Drawing::Point(229, 146);
+			this->GPSInput->Name = L"GPSInput";
+			this->GPSInput->Size = System::Drawing::Size(282, 22);
+			this->GPSInput->TabIndex = 14;
 			// 
 			// page2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(541, 311);
-			this->Controls->Add(this->NextPage_2);
-			this->Controls->Add(this->GPSLoc);
-			this->Controls->Add(this->VideoLoc);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->label2);
-			this->Controls->Add(this->label1);
+			this->ClientSize = System::Drawing::Size(605, 295);
+			this->Controls->Add(this->GPSInput);
+			this->Controls->Add(this->VideoInput);
+			this->Controls->Add(this->GPSLabel);
+			this->Controls->Add(this->VideoLabel);
+			this->Controls->Add(this->Instruction2);
+			this->Controls->Add(this->Next3);
 			this->Name = L"page2";
 			this->Text = L"page2";
 			this->ResumeLayout(false);
@@ -138,10 +139,10 @@ namespace Team16UserController {
 
 		}
 #pragma endregion
-private: System::Void NextPage_2_Click(System::Object^  sender, System::EventArgs^  e) {
-	/*this->Hide();
-	page3 ^obj3 = gcnew page3();
-	obj3->ShowDialog();*/
-}
+	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->Hide();
+		page3 ^obj3 = gcnew page3();
+		obj3->ShowDialog();
+	}
 };
 }
