@@ -37,9 +37,6 @@
     <EmbeddedResource Include="page1.resx">
       <Filter>Resource Files</Filter>
     </EmbeddedResource>
-    <EmbeddedResource Include="page3.resx">
-      <Filter>Resource Files</Filter>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Text Include="tempData.txt" />

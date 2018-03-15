@@ -4,8 +4,8 @@
 //#include "page1.h"
 #include<vector>
 #include"page3_node.h"
-//#using <System.dll>
-//#include "stdafx.h"
+#include <cliext\vector>
+#include <string>
 
 using namespace System::IO;
 using namespace std;
@@ -50,17 +50,20 @@ namespace Team16UserController {
 				delete components;
 			}
 		}
+		
 	private:
 		System::Windows::Forms::Label^  label1;
+	private: 
+		//System::Windows::Forms::Button^  button1;
+		System::Windows::Forms::Button^ newButton;
 
-	protected:
-
+	public:
+		cliext::vector<Team16UserController::node^>dData;
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
-	private: System::Windows::Forms::Button^  button1;
 
 
 #pragma region Windows Form Designer generated code
@@ -71,7 +74,7 @@ namespace Team16UserController {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			//this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -84,84 +87,31 @@ namespace Team16UserController {
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"List of Heat Signatures";
 			this->label1->Click += gcnew System::EventHandler(this, &page3::label1_Click);
+ 
 			// 
 			// page3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(522, 327);
+			//this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Name = L"page3";
 			this->Text = L"page3";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			this->button1->Location = System::Drawing::Point(312, 273);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(106, 36);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"just checking";
-			this->button1->UseVisualStyleBackColor = true;
-			/*this->button1->Click += gcnew System::EventHandler(this, &page3::button1_Click);
 			
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(746, 403);
-			this->Controls->Add(this->button1);
-			this->Name = L"page3";
-			this->Text = L"List of Heat Signatures";
-			this->ResumeLayout(false);*/
+			displayData(dData);
 		}
 #pragma endregion
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
+			 		
+	public:System::Void displayData(cliext::vector<Team16UserController::node^>dData);
 
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		/*this->Hide();
-		page1 ^obj1 = gcnew page1();
-		obj1->ShowDialog();
-*/
-	}
-
-
-
-			 //////cliext::vector<System::String^> readline(System::String^);
-
-			 //void readfromfile(System::String ^ filename, cliext::vector<Team16UserController::node^> v);
-
-			 //cli::array<system::string^>^ readeachline(system::string^);
 	};
-	
-	//}
-	//inline void Team16UserController::page3::readFromFile(System::String^filename, cliext::vector<Team16UserController::node^>v)
-	//{
-
-	//	StreamReader^ inputFile = File::OpenText(filename);
-
-	//	String^ line;
-	//	int count = 0;
-	//	line = inputFile->ReadLine();
-
-	//	//Button
-	//	//while ((line = inputFile->ReadLine())!=nullptr)
-	//	//{
-	//	//	Team16UserController::node^ node = gcnew Team16UserController::node("fgh","wer","sdfg","asd");
-	//	//	
-	//	//}
-
-	//}
-
-	//////cliext::vector<System::String^> readline(System::String^);
-
-	//cli::array<System::String^>^ readEachLine(System::String^);
 }
-
-
-
-
-
-
-
-
-
-
+	
+	
+	

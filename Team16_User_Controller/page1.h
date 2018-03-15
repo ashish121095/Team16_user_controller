@@ -212,13 +212,13 @@ namespace Team16UserController {
 			this->PerformLayout();
 
 		}
+
 #pragma endregion
 
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->Hide();
 		page3 ^obj3 = gcnew page3();
 		obj3->ShowDialog();
-
 	}
 
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {

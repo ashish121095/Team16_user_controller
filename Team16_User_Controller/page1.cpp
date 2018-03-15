@@ -9,10 +9,35 @@ using namespace std;
 [STAThreadAttribute]
 int main(cli::array < System::String^ > ^ args) {
 	
+
+	/*Team16UserController::page3^ p3 = gcnew Team16UserController::page3;
+	Team16UserController::node^ n = gcnew Team16UserController::node;
+	cliext::vector<Team16UserController::node^>v;
+
+	n->readFromFile("tempData.txt", v);
+	p3->displayData(v);
+*/
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
 	Team16UserController::page1 form;
 	Application::Run(%form);
+	
+
+	/*Team16UserController::page3 form3;
+	Application::Run(%form3);*/
+
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
 	//Team16UserController::node^ n = gcnew Team16UserController::node("asds", "asddf", "wer", "ga");
 	//
 	////vector with pointer to point 
@@ -37,5 +62,3 @@ int main(cli::array < System::String^ > ^ args) {
 	//v.push_back(n);
 	
 
-	return 0;
-}

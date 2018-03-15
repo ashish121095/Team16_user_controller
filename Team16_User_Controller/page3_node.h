@@ -1,7 +1,6 @@
 #pragma once
 #include <cliext\vector>
 #include <string>
-#include<array>
 
 namespace Team16UserController {
 
@@ -10,7 +9,7 @@ namespace Team16UserController {
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Collections::Generic;
-	public ref class node :System::Collections::Generic::LinkedList<String^> {
+	public ref class node {
 
 	public:
 		
@@ -18,13 +17,14 @@ namespace Team16UserController {
 		String^ time;
 		String^ altitude;
 		String^ speed;
-		node^ next;
-		node(void);
+		node();
 		node(System::String ^, System::String ^, System::String ^, System::String ^);
 		~node();
 		cliext::vector<node^>v;
 
-		void readFromFile(std::string filename, cliext::vector<node^>v);
+		static cliext::vector<node^> readFromFile(std::string filename, cliext::vector<node^>v);
+
 
 	};
 }
+

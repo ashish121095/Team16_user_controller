@@ -1,5 +1,5 @@
 #include "page3.h"
-#include "page3_node.h"
+//#include "page3_node.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -7,16 +7,17 @@
 #include<sstream>
 
 #define ARRAY_SIZE 4;
+using namespace System;
+using namespace System::Windows::Forms;
 using namespace System::IO;
 using namespace std;
 
 
-Team16UserController::node::node(void) {
+Team16UserController::node::node() {
 	gps = nullptr;
 	speed = nullptr;
 	time = nullptr;
 	altitude = nullptr;
-	next->next = nullptr;
 }
 Team16UserController::node::node(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude) {
 	gps = dGps;
@@ -31,7 +32,7 @@ Team16UserController::node::~node()
 }
  
 
-void Team16UserController::node::readFromFile(std::string filename, cliext::vector<node^> v)
+cliext::vector<Team16UserController::node^> Team16UserController::node::readFromFile(std::string filename, cliext::vector<node^> v)
 {
 	node^ n = gcnew node();
 	std::string data;
@@ -53,94 +54,48 @@ void Team16UserController::node::readFromFile(std::string filename, cliext::vect
 
 		v.push_back(n);
 		eachLineData.clear();
+
 	}
+	return v;
+}
+//
+//System::Void Team16UserController::page3::button1_Click(System::Object ^ sender, System::EventArgs ^ e)
+//{
+//	MessageBox::Show("hello");
+//
+//}
+
+Void Team16UserController::page3::displayData(cliext::vector<Team16UserController::node^>dData) {
+	
+	dData = Team16UserController::node::readFromFile("tempData.txt",dData);
+	int width = 138;
+	int height = 55;
+	int x = 189;
+	int y = 134;
+	for (int i = 0; i < dData.size(); i++) {
+		this->newButton = (gcnew System::Windows::Forms::Button());
+
+		this->newButton->Location = System::Drawing::Point(x, y);
+		this->newButton->Name = L"button" + (++i);
+		this->newButton->Size = System::Drawing::Size(width, height);
+		this->newButton->TabIndex = 1;
+		this->newButton->Text = L"Heat Signature " + i;
+		this->newButton->UseVisualStyleBackColor = true;
+		i--;
+		this->Controls->Add(this->newButton);
+
+//		components->Add(newButton);
+
+		y = y + height + 10;
+	}
+
+
 }
 
-//std::vector<std::string>Team16UserController::node::readEachLine(string line)
-//{
-//	//cliext::vector<System::String^> vec;
-//
-//	std::vector <std::string>eachLineData;
-//	std::istringstream ss(line);
-//	string token;
-//
-//	while (std::getline(ss,token,',')) {
-//		eachLineData.push_back(token);
-//	}
-//	/*return vec;*/
-//	// TODO: insert return statement here
-//	return eachLineData;
-//}
-//
 
-//still unsure if I need this or not
-//Team16UserController::page3::page3(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude)
-//{
-//	/*time = dtime;
-//	gps = dGps;
-//	speed = dSpeed;
-//	altitude = dAltitude;*/
-//}
-
-//Team16UserController::page3::page3() {
-
-//void Team16UserController::readFromFile(System::String ^ filename, cliext::vector<Team16UserController::node^>v)
-//{
-//
-//	StreamReader^ inputFile = File::OpenText(filename);
-//	Console::WriteLine("trying to open file {0}...", filename);
-//
-//	String^ line;
-//	int count = 0;
-//	line = inputFile->ReadLine();
-//
-//	//Button
-//	//while ((line = inputFile->ReadLine())!=nullptr)
-//	//{
-//	//	Team16UserController::node^ node = gcnew Team16UserController::node("fgh","wer","sdfg","asd");
-//	//	
-//	//}
-//
-//}
-//
-//cli::array<System::String^>^ Team16UserController::page3::readEachLine(System::String^ line)
-//{
-//	//cliext::vector<System::String^>vec;
-//	cli::array<String^>^ strarray = gcnew cli::array<String^>(4);
-//
-//	return strarray;
-//}
+	
 
 
 
-//add data of drone
-//void Team16UserController::node::addData(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude)
-//{
-//	droneData
-//
-//
-//
-//}
-//function to read data from a file
-//
-//list::list() {
-//	node* next = NULL;
-//}
-//
-//void list::addData(string dTime, string dGps, string dSpeed, string dAltitude) {
-//	
-//	node *newNode = new node;
-//	newNode->time = dTime;
-//	newNode->gps = dGps;
-//	newNode->speed= dSpeed;
-//	newNode->altitude= dAltitude;
-//	newNode->next= NULL;
-//
-//}
-//
-//
+	
 
-//void Team16UserController::page3::readfromfile(System::String ^ filename, cliext::vector<Team16UserController::node^> v)
-//{
-//	throw gcnew System::NotImplementedException();
-//}
