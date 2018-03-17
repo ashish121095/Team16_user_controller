@@ -220,7 +220,7 @@ namespace Team16UserController {
 		this->Hide();
 		page2 ^obj2 = gcnew page2();
 		obj2->ShowDialog();
-
+		this->Close();
 	}
 
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {

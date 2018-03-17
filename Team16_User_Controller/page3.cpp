@@ -1,5 +1,4 @@
 #include "page3.h"
-//#include "page3_node.h"
 #include <string>
 #include <iostream>
 #include <fstream>
@@ -58,16 +57,10 @@ cliext::vector<Team16UserController::node^> Team16UserController::node::readFrom
 	}
 	return v;
 }
-//
-//System::Void Team16UserController::page3::button1_Click(System::Object ^ sender, System::EventArgs ^ e)
-//{
-//	MessageBox::Show("hello");
-//
-//}
 
-Void Team16UserController::page3::displayData(cliext::vector<Team16UserController::node^>dData) {
-	
-	dData = Team16UserController::node::readFromFile("tempData.txt",dData);
+System::Void Team16UserController::page3::displayData() {
+
+	dData = Team16UserController::node::readFromFile("tempData.txt", dData);
 	int width = 138;
 	int height = 55;
 	int x = 189;
@@ -84,18 +77,20 @@ Void Team16UserController::page3::displayData(cliext::vector<Team16UserControlle
 		i--;
 		this->Controls->Add(this->newButton);
 
-//		components->Add(newButton);
-
 		y = y + height + 10;
 	}
-
-
 }
+System::Void Team16UserController::page3::newButton_click(System::Object ^ sender, System::EventArgs ^ e)
+{
+	for (int i = 1; i <= dData.size(); i++) {
 
+		if (newButton->Text == "Heat Signature" + i) {
+			this->Hide();
+			page4^ obj4 = gcnew page4(dData,i);
+			obj4->ShowDialog();
+			this->Close();
+		}
 
-	
-
-
-
-	
+	}
+}
 

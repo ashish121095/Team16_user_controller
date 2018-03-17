@@ -140,6 +140,7 @@
     <ClCompile Include="page1.cpp" />
     <ClCompile Include="page2.cpp" />
     <ClCompile Include="page3.cpp" />
+    <ClCompile Include="page4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="page1.h">
@@ -152,6 +153,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="page3_node.h" />
+    <ClInclude Include="page4.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="page1.resx">
@@ -159,6 +163,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="page2.resx">
       <DependentUpon>page2.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="page3.resx">
+      <DependentUpon>page3.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="page4.resx">
+      <DependentUpon>page4.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
