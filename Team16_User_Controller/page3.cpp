@@ -5,7 +5,6 @@
 #include <strstream>
 #include<sstream>
 
-#define ARRAY_SIZE 4;
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::IO;
@@ -27,10 +26,6 @@ Team16UserController::node::node() {
 
 Team16UserController::node::~node()
 {
-	gps = nullptr;
-	speed = nullptr;
-	time = nullptr;
-	altitude = nullptr;
 }
  
 
@@ -63,44 +58,61 @@ cliext::vector<Team16UserController::node^> Team16UserController::node::readFrom
 System::Void Team16UserController::page3::displayData() {
 
 	dData = Team16UserController::node::readFromFile("tempData.txt", dData);
-	int width = 138;
-	int height = 55;
-	int x = 189;
-	int y = 134;
+	//Object[] ItemObject = gcnew Object[dData.size];
+
 	for (int i = 0; i < dData.size(); i++) {
-
-		this->newButton = (gcnew System::Windows::Forms::Button());
-
-		this->newButton->Location = System::Drawing::Point(x, y);
-		this->newButton->Name = L"button" + (++i);
-		this->newButton->Size = System::Drawing::Size(width, height);
-		this->newButton->TabIndex = 1;
-		this->newButton->Text = L"Heat Signature " + i;
-		this->newButton->UseVisualStyleBackColor = true;
-		i--;
-		//System::Console::Write(btns);
-		btns[i] = newButton;
-
-		y = y + height + 10;
-	}
-
-	for (int j = 0; j < btns->Length;j++) {
-		this->Controls->Add(btns[j]);
 		
+		this->HeatSignatures->Items->Add("Heat Signature "+(i+1));
 	}
-
 }
-System::Void Team16UserController::page3::newButton_Click(System::Object ^ sender, System::EventArgs ^ e)
+System::Void Team16UserController::page3::displayBtn_Click(System::Object ^ sender, System::EventArgs ^ e)
 {
-	for (int i = 0; i < btns->Length; i++) {
+	this->Hide();
+	page4^ obj4 = gcnew page4(dData, HeatSignatures->Text);
+	obj4->ShowDialog();
+	this->Close();
 
-		if (btns[i]->Text == "Heat Signature "+(i+1)) {
-			this->Hide();
-			page4^ obj4 = gcnew page4(dData, i);
-			obj4->ShowDialog();
-			this->Close();
-		}
-	}
 
 }
 
+
+
+
+//System::Void Team16UserController::page3::newButton_Click(System::Object ^ sender, System::EventArgs ^ e)
+//{
+//	for (int i = 0; i < btns->Length; i++) {
+//
+//		if (btns[i]->Text == "Heat Signature "+(i+1)) {
+//			this->Hide();
+//			page4^ obj4 = gcnew page4(dData, i);
+//			obj4->ShowDialog();
+//			this->Close();
+//		}
+//	}
+//
+//}
+
+/*int width = 138;
+int height = 55;
+int x = 189;
+int y = 134;*/
+
+//this->newButton = (gcnew System::Windows::Forms::Button());
+
+//this->newButton->Location = System::Drawing::Point(x, y);
+//this->newButton->Name = L"button" + (++i);
+//this->newButton->Size = System::Drawing::Size(width, height);
+//this->newButton->TabIndex = 1;
+//this->newButton->Text = L"Heat Signature " + i;
+//this->newButton->UseVisualStyleBackColor = true;
+//i--;
+////System::Console::Write(btns);
+//btns[i] = newButton;
+
+//y = y + height + 10;
+
+
+/*for (int j = 0; j < btns->Length;j++) {
+this->Controls->Add(btns[j]);
+
+}*/
