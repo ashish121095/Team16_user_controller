@@ -16,12 +16,12 @@ namespace Team16UserController {
 	public ref class page4 : public System::Windows::Forms::Form
 	{
 	public:
-		cliext::vector<Team16UserController::node^>dData;
+		cliext::vector<Team16UserController::node^>droneData;
 		int pos = 0;
 		page4(cliext::vector<Team16UserController::node^>dData, int val)
 		{
-			dData = dData;
-			pos = val;
+			droneData = dData;
+			pos=val;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -77,10 +77,11 @@ namespace Team16UserController {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			displayIndividualData(droneData,pos);
 		}
 #pragma endregion
 	public:
-		System::Void displayIndividualData();
+		System::Void displayIndividualData(cliext::vector<Team16UserController::node^>dData,int);
 
 	};
 }

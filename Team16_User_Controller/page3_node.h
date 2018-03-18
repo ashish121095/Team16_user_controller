@@ -18,7 +18,7 @@ namespace Team16UserController {
 		String^ altitude;
 		String^ speed;
 		node();
-		node(System::String ^, System::String ^, System::String ^, System::String ^);
+	//	node(System::String ^, System::String ^, System::String ^, System::String ^);
 		~node();
 		cliext::vector<node^>v;
 

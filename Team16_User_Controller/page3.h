@@ -32,7 +32,7 @@ namespace Team16UserController {
 		cliext::vector<Team16UserController::node^>dData;
 		page3(cliext::vector<Team16UserController::node^>dData)
 		{
-			
+			dData = dData;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -55,14 +55,10 @@ namespace Team16UserController {
 
 	private: 
 		System::Windows::Forms::Button^ newButton;
-
+		cli::array <Button^> ^ btns= gcnew cli::array<Button^>(6);
 	private: System::Windows::Forms::Label^  label1;
+	private: System::Windows::Forms::Button^  button1;
 
-	public:
-
-	public:
-
-	public:
 	private:
 		/// <summary>
 		/// Required designer variable.
@@ -78,6 +74,7 @@ namespace Team16UserController {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -93,11 +90,22 @@ namespace Team16UserController {
 			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->label1->Click += gcnew System::EventHandler(this, &page3::label1_Click);
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(18, 48);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(138, 41);
+			this->button1->TabIndex = 1;
+			this->button1->Text = L"go to page4";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &page3::button1_Click);
+			// 
 			// page3
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(872, 642);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
@@ -106,18 +114,27 @@ namespace Team16UserController {
 			this->Text = L"page3";
 			this->ResumeLayout(false);
 
+			
 			displayData();
+			this->newButton->Click += gcnew System::EventHandler(this, &page3::newButton_Click);
+
 		}
 #pragma endregion	 		
 	public:
 		System::Void displayData(); 
-		System::Void newButton_click(System::Object^  sender, System::EventArgs^  e);
+		System::Void newButton_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 	}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-	};
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		this->Hide();
+		page4^ obj4 = gcnew page4(dData, 0);
+		obj4->ShowDialog();
+		this->Close();
+	}
+};
 }
 	
 	

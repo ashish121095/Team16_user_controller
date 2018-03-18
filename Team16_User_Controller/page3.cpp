@@ -18,27 +18,29 @@ Team16UserController::node::node() {
 	time = nullptr;
 	altitude = nullptr;
 }
-Team16UserController::node::node(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude) {
-	gps = dGps;
-	time = dtime;
-	speed = dSpeed;;
-	altitude = dAltitude;
-}
+//Team16UserController::node::node(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude) {
+//	gps = dGps;
+//	time = dtime;
+//	speed = dSpeed;;
+//	altitude = dAltitude;
+//}
 
 Team16UserController::node::~node()
 {
-	throw gcnew System::NotImplementedException();
+	gps = nullptr;
+	speed = nullptr;
+	time = nullptr;
+	altitude = nullptr;
 }
  
 
 cliext::vector<Team16UserController::node^> Team16UserController::node::readFromFile(std::string filename, cliext::vector<node^> v)
 {
-	node^ n = gcnew node();
 	std::string data;
 	cliext::vector<System::String^> eachLineData;
 	ifstream inFile(filename);
 	while (getline(inFile, data)) {
-
+		node^ n = gcnew node();
 		std::istringstream ss(data);
 		string token;
 		while (getline(ss, token, ',')) {
@@ -66,6 +68,7 @@ System::Void Team16UserController::page3::displayData() {
 	int x = 189;
 	int y = 134;
 	for (int i = 0; i < dData.size(); i++) {
+
 		this->newButton = (gcnew System::Windows::Forms::Button());
 
 		this->newButton->Location = System::Drawing::Point(x, y);
@@ -75,22 +78,29 @@ System::Void Team16UserController::page3::displayData() {
 		this->newButton->Text = L"Heat Signature " + i;
 		this->newButton->UseVisualStyleBackColor = true;
 		i--;
-		this->Controls->Add(this->newButton);
+		//System::Console::Write(btns);
+		btns[i] = newButton;
 
 		y = y + height + 10;
 	}
-}
-System::Void Team16UserController::page3::newButton_click(System::Object ^ sender, System::EventArgs ^ e)
-{
-	for (int i = 1; i <= dData.size(); i++) {
 
-		if (newButton->Text == "Heat Signature" + i) {
+	for (int j = 0; j < btns->Length;j++) {
+		this->Controls->Add(btns[j]);
+		
+	}
+
+}
+System::Void Team16UserController::page3::newButton_Click(System::Object ^ sender, System::EventArgs ^ e)
+{
+	for (int i = 0; i < btns->Length; i++) {
+
+		if (btns[i]->Text == "Heat Signature "+(i+1)) {
 			this->Hide();
-			page4^ obj4 = gcnew page4(dData,i);
+			page4^ obj4 = gcnew page4(dData, i);
 			obj4->ShowDialog();
 			this->Close();
 		}
-
 	}
+
 }
 
