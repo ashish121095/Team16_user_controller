@@ -1,12 +1,11 @@
 
 
 #pragma once
-//#include "page1.h"
 #include<vector>
 #include"page3_node.h"
-//#using <System.dll>
-//#include "stdafx.h"
-
+#include <cliext\vector>
+#include <string>
+#include "page4.h"
 using namespace System::IO;
 using namespace std;
 
@@ -30,9 +29,10 @@ namespace Team16UserController {
 	public ref class page3 : public System::Windows::Forms::Form
 	{
 	public:
-		//node n;
-		page3(void)
+		cliext::vector<Team16UserController::node^>dData;
+		page3(cliext::vector<Team16UserController::node^>dData)
 		{
+			dData = dData;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -50,17 +50,22 @@ namespace Team16UserController {
 				delete components;
 			}
 		}
+		
 	private:
-		System::Windows::Forms::Label^  label1;
 
-	protected:
+	private: 
+		System::Windows::Forms::Button^ newButton;
+		
+	private: System::Windows::Forms::Label^  label1;
+
+	private: System::Windows::Forms::ComboBox^  HeatSignatures;
+	private: System::Windows::Forms::Button^  displayBtn;
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
-	private: System::Windows::Forms::Button^  button1;
 
 
 #pragma region Windows Form Designer generated code
@@ -71,97 +76,79 @@ namespace Team16UserController {
 		void InitializeComponent(void)
 		{
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->HeatSignatures = (gcnew System::Windows::Forms::ComboBox());
+			this->displayBtn = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(165, 40);
+			this->label1->Dock = System::Windows::Forms::DockStyle::Top;
+			this->label1->FlatStyle = System::Windows::Forms::FlatStyle::System;
+			this->label1->Location = System::Drawing::Point(0, 0);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Padding = System::Windows::Forms::Padding(5);
-			this->label1->Size = System::Drawing::Size(162, 27);
+			this->label1->Size = System::Drawing::Size(872, 27);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"List of Heat Signatures";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::TopCenter;
 			this->label1->Click += gcnew System::EventHandler(this, &page3::label1_Click);
+			// 
+			// HeatSignatures
+			// 
+			this->HeatSignatures->FormattingEnabled = true;
+			this->HeatSignatures->Location = System::Drawing::Point(296, 110);
+			this->HeatSignatures->Name = L"HeatSignatures";
+			this->HeatSignatures->Size = System::Drawing::Size(304, 33);
+			this->HeatSignatures->TabIndex = 2;
+			this->HeatSignatures->SelectedIndexChanged += gcnew System::EventHandler(this, &page3::HeatSignatures_SelectedIndexChanged);
+			// 
+			// displayBtn
+			// 
+			this->displayBtn->Location = System::Drawing::Point(382, 211);
+			this->displayBtn->Name = L"displayBtn";
+			this->displayBtn->Size = System::Drawing::Size(134, 45);
+			this->displayBtn->TabIndex = 3;
+			this->displayBtn->Text = L"Display";
+			this->displayBtn->UseVisualStyleBackColor = true;
+			this->displayBtn->Click += gcnew System::EventHandler(this, &page3::displayBtn_Click);
 			// 
 			// page3
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(522, 327);
+			this->ClientSize = System::Drawing::Size(872, 642);
+			this->Controls->Add(this->displayBtn);
+			this->Controls->Add(this->HeatSignatures);
 			this->Controls->Add(this->label1);
+			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Margin = System::Windows::Forms::Padding(4, 5, 4, 5);
 			this->Name = L"page3";
 			this->Text = L"page3";
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
-			this->button1->Location = System::Drawing::Point(312, 273);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(106, 36);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"just checking";
-			this->button1->UseVisualStyleBackColor = true;
-			/*this->button1->Click += gcnew System::EventHandler(this, &page3::button1_Click);
-			
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(746, 403);
-			this->Controls->Add(this->button1);
-			this->Name = L"page3";
-			this->Text = L"List of Heat Signatures";
-			this->ResumeLayout(false);*/
+			displayData();
 		}
-#pragma endregion
+#pragma endregion	 		
+	public:
+		System::Void displayData(); 
+		//System::Void newButton_Click(System::Object^  sender, System::EventArgs^  e);
+
+	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
+	}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
-
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		/*this->Hide();
-		page1 ^obj1 = gcnew page1();
-		obj1->ShowDialog();
-*/
+		page4^ obj4 = gcnew page4(dData, 0);
+		obj4->ShowDialog();
+		this->Close();*/
 	}
-
-
-
-			 //////cliext::vector<System::String^> readline(System::String^);
-
-			 //void readfromfile(System::String ^ filename, cliext::vector<Team16UserController::node^> v);
-
-			 //cli::array<system::string^>^ readeachline(system::string^);
-	};
-	
-	//}
-	//inline void Team16UserController::page3::readFromFile(System::String^filename, cliext::vector<Team16UserController::node^>v)
-	//{
-
-	//	StreamReader^ inputFile = File::OpenText(filename);
-
-	//	String^ line;
-	//	int count = 0;
-	//	line = inputFile->ReadLine();
-
-	//	//Button
-	//	//while ((line = inputFile->ReadLine())!=nullptr)
-	//	//{
-	//	//	Team16UserController::node^ node = gcnew Team16UserController::node("fgh","wer","sdfg","asd");
-	//	//	
-	//	//}
-
-	//}
-
-	//////cliext::vector<System::String^> readline(System::String^);
-
-	//cli::array<System::String^>^ readEachLine(System::String^);
+private: System::Void HeatSignatures_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 }
-
-
-
-
-
-
-
-
-
-
+private: System::Void displayBtn_Click(System::Object^  sender, System::EventArgs^  e);
+};
+}
+	
+	
+	
