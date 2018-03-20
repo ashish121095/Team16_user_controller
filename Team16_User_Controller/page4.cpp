@@ -6,8 +6,8 @@ System::Void Team16UserController::page4::displayIndividualData(cliext::vector<T
 		
 		if (hsign == "Heat Signature "+(k+1)) {
 
-			cli::array<String^>^lines = { "Gps: " + dData[k]->gps + " \n Altitude: " + dData[k]->altitude + "\n Speed: " +
-				dData[k]->speed + "\n Time: " + dData[k]->time + "\n" };
+			cli::array<String^>^lines = { "Gps: " + dData[k]->gps + " \r \n Altitude: " + dData[k]->altitude + "\r \n Speed: " +
+				dData[k]->speed + "\r \n Time: " + dData[k]->time + "\r \n" };
 
 			textBox1->Lines = lines;
 			Controls->Add(textBox1);
@@ -21,6 +21,11 @@ System::Void Team16UserController::page4::backBtn_Click(System::Object ^ sender,
 	this->Hide();
 	page3^ obj3 = gcnew page3(droneData);
 	obj3->ShowDialog();
+	this->Close();
+}
+
+System::Void Team16UserController::page4::exitBtn_Click(System::Object ^ sender, System::EventArgs ^ e)
+{
 	this->Close();
 }
 

@@ -19,6 +19,7 @@ namespace Team16UserController {
 	public:
 		cliext::vector<Team16UserController::node^>droneData;
 	private: System::Windows::Forms::Button^  backBtn;
+	private: System::Windows::Forms::Button^  exitBtn;
 	public:
 		String ^ hsign;
 		page4(cliext::vector<Team16UserController::node^>dData, String^ str)
@@ -61,6 +62,7 @@ namespace Team16UserController {
 		{
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->backBtn = (gcnew System::Windows::Forms::Button());
+			this->exitBtn = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// textBox1
@@ -75,7 +77,7 @@ namespace Team16UserController {
 			// 
 			this->backBtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->backBtn->Location = System::Drawing::Point(172, 209);
+			this->backBtn->Location = System::Drawing::Point(119, 208);
 			this->backBtn->Name = L"backBtn";
 			this->backBtn->Size = System::Drawing::Size(177, 49);
 			this->backBtn->TabIndex = 1;
@@ -83,11 +85,24 @@ namespace Team16UserController {
 			this->backBtn->UseVisualStyleBackColor = true;
 			this->backBtn->Click += gcnew System::EventHandler(this, &page4::backBtn_Click);
 			// 
+			// exitBtn
+			// 
+			this->exitBtn->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->exitBtn->Location = System::Drawing::Point(319, 209);
+			this->exitBtn->Name = L"exitBtn";
+			this->exitBtn->Size = System::Drawing::Size(84, 48);
+			this->exitBtn->TabIndex = 2;
+			this->exitBtn->Text = L"Exit";
+			this->exitBtn->UseVisualStyleBackColor = true;
+			this->exitBtn->Click += gcnew System::EventHandler(this, &page4::exitBtn_Click);
+			// 
 			// page4
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(507, 314);
+			this->Controls->Add(this->exitBtn);
 			this->Controls->Add(this->backBtn);
 			this->Controls->Add(this->textBox1);
 			this->Name = L"page4";
@@ -95,13 +110,14 @@ namespace Team16UserController {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
-			displayIndividualData(droneData);
 		}
 #pragma endregion
 	public:
 		System::Void displayIndividualData(cliext::vector<Team16UserController::node^>dData);
 
-	private: System::Void backBtn_Click(System::Object^  sender, System::EventArgs^  e);
+	private: 
+		System::Void backBtn_Click(System::Object^  sender, System::EventArgs^  e);
+		System::Void exitBtn_Click(System::Object^  sender, System::EventArgs^  e);
 	};
 }
 
