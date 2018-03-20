@@ -1,6 +1,8 @@
 #include "page1.h"
 #include "page3.h"
 #include <cliext\vector>
+#include <fstream>
+#include <string>
 //#using <System.dll>
 using namespace System;
 using namespace System::Windows::Forms;
@@ -25,7 +27,6 @@ int main(cli::array < System::String^ > ^ args) {
 
 	/*Team16UserController::page3 form3;
 	Application::Run(%form3);*/
-
 	return 0;
 }
 

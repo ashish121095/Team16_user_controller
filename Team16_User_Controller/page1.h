@@ -50,18 +50,23 @@ namespace Team16UserController {
 
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
-	private: System::Windows::Forms::TextBox^  SearchCW;
 
 
 
 
-	private: System::Windows::Forms::TextBox^  SearchCN;
+
+
 	private: System::Windows::Forms::Button^  Save;
 	private: System::Windows::Forms::Label^  StartCN;
 	private: System::Windows::Forms::Label^  StartCW;
 
 
 	private: System::Windows::Forms::Button^  Populate;
+	private: System::Windows::Forms::MaskedTextBox^  SearchCN;
+	private: System::Windows::Forms::MaskedTextBox^  SearchCW;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
 
 
 
@@ -92,12 +97,15 @@ namespace Team16UserController {
 			this->Next2 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->SearchCW = (gcnew System::Windows::Forms::TextBox());
-			this->SearchCN = (gcnew System::Windows::Forms::TextBox());
 			this->Save = (gcnew System::Windows::Forms::Button());
 			this->StartCN = (gcnew System::Windows::Forms::Label());
 			this->StartCW = (gcnew System::Windows::Forms::Label());
 			this->Populate = (gcnew System::Windows::Forms::Button());
+			this->SearchCN = (gcnew System::Windows::Forms::MaskedTextBox());
+			this->SearchCW = (gcnew System::Windows::Forms::MaskedTextBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Instruction
@@ -125,36 +133,20 @@ namespace Team16UserController {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(23, 177);
+			this->label1->Location = System::Drawing::Point(7, 175);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(133, 17);
+			this->label1->Size = System::Drawing::Size(157, 17);
 			this->label1->TabIndex = 2;
-			this->label1->Text = L"Search Coordinates";
+			this->label1->Text = L"Search Coordinates (N)";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(23, 98);
+			this->label2->Location = System::Drawing::Point(7, 98);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(118, 17);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Start Coordinates";
-			// 
-			// SearchCW
-			// 
-			this->SearchCW->Location = System::Drawing::Point(170, 200);
-			this->SearchCW->Name = L"SearchCW";
-			this->SearchCW->Size = System::Drawing::Size(100, 22);
-			this->SearchCW->TabIndex = 7;
-			this->SearchCW->Text = L"West";
-			// 
-			// SearchCN
-			// 
-			this->SearchCN->Location = System::Drawing::Point(170, 172);
-			this->SearchCN->Name = L"SearchCN";
-			this->SearchCN->Size = System::Drawing::Size(100, 22);
-			this->SearchCN->TabIndex = 6;
-			this->SearchCN->Text = L"North";
 			// 
 			// Save
 			// 
@@ -192,17 +184,64 @@ namespace Team16UserController {
 			this->Populate->UseVisualStyleBackColor = true;
 			this->Populate->Click += gcnew System::EventHandler(this, &page1::Populate_Click);
 			// 
+			// SearchCN
+			// 
+			this->SearchCN->Location = System::Drawing::Point(170, 172);
+			this->SearchCN->Mask = L"000.00000";
+			this->SearchCN->Name = L"SearchCN";
+			this->SearchCN->Size = System::Drawing::Size(100, 22);
+			this->SearchCN->TabIndex = 12;
+			// 
+			// SearchCW
+			// 
+			this->SearchCW->BeepOnError = true;
+			this->SearchCW->Location = System::Drawing::Point(170, 200);
+			this->SearchCW->Mask = L"000.00000";
+			this->SearchCW->Name = L"SearchCW";
+			this->SearchCW->Size = System::Drawing::Size(100, 22);
+			this->SearchCW->TabIndex = 13;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Location = System::Drawing::Point(133, 200);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(31, 17);
+			this->label3->TabIndex = 14;
+			this->label3->Text = L"(W)";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Location = System::Drawing::Point(133, 126);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(31, 17);
+			this->label4->TabIndex = 15;
+			this->label4->Text = L"(W)";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(133, 98);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(28, 17);
+			this->label5->TabIndex = 16;
+			this->label5->Text = L"(N)";
+			// 
 			// page1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(609, 254);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label3);
+			this->Controls->Add(this->SearchCW);
+			this->Controls->Add(this->SearchCN);
 			this->Controls->Add(this->Populate);
 			this->Controls->Add(this->StartCW);
 			this->Controls->Add(this->StartCN);
 			this->Controls->Add(this->Save);
-			this->Controls->Add(this->SearchCW);
-			this->Controls->Add(this->SearchCN);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->Next2);
@@ -249,4 +288,4 @@ namespace Team16UserController {
 
 	}
 };
-	}
+}
