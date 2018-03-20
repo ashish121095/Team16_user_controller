@@ -13,10 +13,7 @@ System::Void Team16UserController::page4::displayIndividualData(cliext::vector<T
 			Controls->Add(textBox1);
 		}
 	}
-	/*textBox1->Text = dData[5]->gps+"\n";
-	textBox1->Text = dData[5]->altitude+"\n";
-	textBox1->Text = dData[5]->speed + "\n";
-	textBox1->Text = dData[5]->time + "\n";*/
+
 }
 
 System::Void Team16UserController::page4::backBtn_Click(System::Object ^ sender, System::EventArgs ^ e)
