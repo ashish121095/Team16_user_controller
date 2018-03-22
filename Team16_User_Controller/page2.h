@@ -41,7 +41,8 @@ namespace Team16UserController {
 	private: System::Windows::Forms::Label^  VideoLabel;
 	private: System::Windows::Forms::Label^  GPSLabel;
 	private: System::Windows::Forms::TextBox^  VideoInput;
-	private: System::Windows::Forms::TextBox^  GPSInput;
+	private: System::Windows::Forms::MaskedTextBox^  maskedTextBox1;
+
 
 
 	protected:
@@ -66,7 +67,7 @@ namespace Team16UserController {
 			this->VideoLabel = (gcnew System::Windows::Forms::Label());
 			this->GPSLabel = (gcnew System::Windows::Forms::Label());
 			this->VideoInput = (gcnew System::Windows::Forms::TextBox());
-			this->GPSInput = (gcnew System::Windows::Forms::TextBox());
+			this->maskedTextBox1 = (gcnew System::Windows::Forms::MaskedTextBox());
 			this->SuspendLayout();
 			// 
 			// Next3
@@ -95,9 +96,9 @@ namespace Team16UserController {
 			this->VideoLabel->AutoSize = true;
 			this->VideoLabel->Location = System::Drawing::Point(71, 89);
 			this->VideoLabel->Name = L"VideoLabel";
-			this->VideoLabel->Size = System::Drawing::Size(128, 17);
+			this->VideoLabel->Size = System::Drawing::Size(146, 17);
 			this->VideoLabel->TabIndex = 11;
-			this->VideoLabel->Text = L"Video File Location";
+			this->VideoLabel->Text = L"Video Folder Location";
 			// 
 			// GPSLabel
 			// 
@@ -115,19 +116,20 @@ namespace Team16UserController {
 			this->VideoInput->Size = System::Drawing::Size(282, 22);
 			this->VideoInput->TabIndex = 13;
 			// 
-			// GPSInput
+			// maskedTextBox1
 			// 
-			this->GPSInput->Location = System::Drawing::Point(229, 146);
-			this->GPSInput->Name = L"GPSInput";
-			this->GPSInput->Size = System::Drawing::Size(282, 22);
-			this->GPSInput->TabIndex = 14;
+			this->maskedTextBox1->Location = System::Drawing::Point(229, 163);
+			this->maskedTextBox1->Mask = L"*.txt";
+			this->maskedTextBox1->Name = L"maskedTextBox1";
+			this->maskedTextBox1->Size = System::Drawing::Size(282, 22);
+			this->maskedTextBox1->TabIndex = 14;
 			// 
 			// page2
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(605, 295);
-			this->Controls->Add(this->GPSInput);
+			this->Controls->Add(this->maskedTextBox1);
 			this->Controls->Add(this->VideoInput);
 			this->Controls->Add(this->GPSLabel);
 			this->Controls->Add(this->VideoLabel);
