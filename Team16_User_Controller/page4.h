@@ -110,6 +110,7 @@ namespace Team16UserController {
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
+			displayIndividualData(droneData);
 		}
 #pragma endregion
 	public:
