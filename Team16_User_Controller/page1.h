@@ -5,6 +5,9 @@
 #include "page2.h"
 #include <fstream>
 #include <string>
+#include <cmath>
+#define PI 3.14
+#define earthRadKm 6371.0
 namespace Team16UserController {
 
 	using namespace System;
@@ -155,6 +158,7 @@ namespace Team16UserController {
 			this->SearchCN->Size = System::Drawing::Size(100, 22);
 			this->SearchCN->TabIndex = 6;
 			this->SearchCN->Text = L"North";
+			this->SearchCN->TextChanged += gcnew System::EventHandler(this, &page1::SearchCN_TextChanged);
 			// 
 			// Save
 			// 
@@ -248,5 +252,13 @@ namespace Team16UserController {
 		}
 
 	}
+private: 
+	System::Void SearchCN_TextChanged(System::Object^  sender, System::EventArgs^  e);
+	//System::Double
+	System::Double degreesToRadians(System::Double);
+	System::Double Team16UserController::page1::calculateDist(System::Double lat, System::Double longi, System::Double u, System::Double v);
+
+	System::Boolean calculateTime(System::Double);
+
 };
 	}

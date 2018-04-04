@@ -30,6 +30,9 @@
     <ClCompile Include="page4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bmp to Jpeg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="page1.h">
@@ -45,6 +48,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="page4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bmp to Jpeg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
