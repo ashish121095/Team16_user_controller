@@ -19,12 +19,14 @@ int main(cli::array < System::String^ > ^ args) {
 /*Determine the range of search coordinates */
 System::Void Team16UserController::page1::SearchCN_TextChanged(System::Object ^ sender, System::EventArgs ^ e)
 {
-	Double u, v;
+	Double u, v,d;
 	Double dist;
-	System::Double startNorthCo = System::Convert::ToDouble(StartCN->Text);
-	System::Double startWestCo = System::Convert::ToDouble(StartCW->Text);
-	System::Double searchNorthCo = System::Convert::ToDouble(SearchCN->Text);
-	System::Double searchWestCo = System::Convert::ToDouble(SearchCW->Text);
+
+	//west coordinates are latitude and north are longitude
+	Double startNorthCo = Double::TryParse(StartCN->Text,d);
+	Double startWestCo = Double::TryParse(StartCW->Text, d);
+	Double searchNorthCo = Double::TryParse(SearchCN->Text, d);
+	Double searchWestCo = Double::TryParse(SearchCW->Text, d);
 
 	startNorthCo = degreesToRadians(startNorthCo);
 	startWestCo = degreesToRadians(startWestCo);
@@ -34,7 +36,11 @@ System::Void Team16UserController::page1::SearchCN_TextChanged(System::Object ^ 
 	u = sin((searchWestCo - startWestCo) / 2);
 	v = sin((searchNorthCo - startNorthCo) / 2);
 	
+	
 	dist = calculateDist(startWestCo,searchWestCo,u,v);
+	if (!calculateTime(dist)) {
+		MessageBox::Show("Search Coordinates are out of range!");
+	}
 }
 /*calculate distance between to coordinates using Haversine formula */
 System::Double Team16UserController::page1::calculateDist(System::Double startLat, System::Double searchLat, System::Double u, System::Double v)
@@ -53,7 +59,18 @@ System::Double Team16UserController::page1::degreesToRadians(System::Double deg)
 System::Boolean Team16UserController::page1::calculateTime(System::Double distance)
 {
 	// need to implement this function
-	return System::Boolean();
+	
+	Double minSpeed = 2.0; //meter per second
+	Double time; //time in Minutes
+	Double timeSec; // time in seconds
+
+	timeSec = (distance / minSpeed); // getting time in seconds
+	time = timeSec / 60.0;  //converting into minutes
+
+	if (time > 10.0) {
+		return false;
+	}
+	return true;
 }
 
 

@@ -149,15 +149,14 @@ namespace Team16UserController {
 			this->SearchCW->Name = L"SearchCW";
 			this->SearchCW->Size = System::Drawing::Size(100, 22);
 			this->SearchCW->TabIndex = 7;
-			this->SearchCW->Text = L"West";
 			// 
 			// SearchCN
 			// 
+			this->SearchCN->ForeColor = System::Drawing::Color::Black;
 			this->SearchCN->Location = System::Drawing::Point(170, 172);
 			this->SearchCN->Name = L"SearchCN";
 			this->SearchCN->Size = System::Drawing::Size(100, 22);
 			this->SearchCN->TabIndex = 6;
-			this->SearchCN->Text = L"North";
 			this->SearchCN->TextChanged += gcnew System::EventHandler(this, &page1::SearchCN_TextChanged);
 			// 
 			// Save
@@ -221,10 +220,19 @@ namespace Team16UserController {
 #pragma endregion
 
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->Hide();
-		page2 ^obj2 = gcnew page2();
-		obj2->ShowDialog();
-		this->Close();
+		bool counter = true;
+		while (counter)
+		{
+			if (SearchCN->Text != "" || SearchCW->Text != "") {
+				counter = false;
+				this->Hide();
+				page2 ^obj2 = gcnew page2();
+				obj2->ShowDialog();
+				this->Close();
+			}
+			MessageBox::Show("Search Coordinates cannot be empty");
+		}
+		
 	}
 
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {
