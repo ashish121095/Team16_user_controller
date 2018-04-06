@@ -5,6 +5,7 @@
 #include "page2.h"
 #include <fstream>
 #include <string>
+#include<math.h>
 #include <cmath>
 #define PI 3.14
 #define earthRadKm 6371.0
@@ -27,14 +28,7 @@ namespace Team16UserController {
 		page1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-		//	std::vector<String>HSigns;
-			//
 		}
-
-	private:
-
 
 	protected:
 		/// <summary>
@@ -50,13 +44,9 @@ namespace Team16UserController {
 	private: System::Windows::Forms::Label^  Instruction;
 	private: System::Windows::Forms::Button^  Next2;
 
-
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
 	private: System::Windows::Forms::TextBox^  SearchCW;
-
-
-
 
 	private: System::Windows::Forms::TextBox^  SearchCN;
 	private: System::Windows::Forms::Button^  Save;
@@ -65,18 +55,6 @@ namespace Team16UserController {
 
 
 	private: System::Windows::Forms::Button^  Populate;
-
-
-
-
-
-
-
-
-
-	protected:
-
-
 
 	private:
 		/// <summary>
@@ -121,7 +99,7 @@ namespace Team16UserController {
 			this->Next2->Name = L"Next2";
 			this->Next2->Size = System::Drawing::Size(106, 35);
 			this->Next2->TabIndex = 1;
-			this->Next2->Text = L"Next Page";
+			this->Next2->Text = L"Search";
 			this->Next2->UseVisualStyleBackColor = true;
 			this->Next2->Click += gcnew System::EventHandler(this, &page1::NextPage_Click);
 			// 
@@ -149,6 +127,7 @@ namespace Team16UserController {
 			this->SearchCW->Name = L"SearchCW";
 			this->SearchCW->Size = System::Drawing::Size(100, 22);
 			this->SearchCW->TabIndex = 7;
+			//this->SearchCW->TextChanged += gcnew System::EventHandler(this, &page1::SearchCW_TextChanged);
 			// 
 			// SearchCN
 			// 
@@ -157,7 +136,7 @@ namespace Team16UserController {
 			this->SearchCN->Name = L"SearchCN";
 			this->SearchCN->Size = System::Drawing::Size(100, 22);
 			this->SearchCN->TabIndex = 6;
-			this->SearchCN->TextChanged += gcnew System::EventHandler(this, &page1::SearchCN_TextChanged);
+			//this->SearchCN->TextChanged += gcnew System::EventHandler(this, &page1::SearchCN_TextChanged);
 			// 
 			// Save
 			// 
@@ -218,27 +197,33 @@ namespace Team16UserController {
 		}
 
 #pragma endregion
-
+		//39.782350, -84.066447
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
-		bool counter = true;
-		while (counter)
-		{
-			if (SearchCN->Text != "" || SearchCW->Text != "") {
-				counter = false;
+	
+		//IMPLEMENT SEARCHCW_TEXTCHAGNED METHOD SEPARATELY
+		if (SearchCN->Text != "" || SearchCW->Text != "") {
 				this->Hide();
-				page2 ^obj2 = gcnew page2();
-				obj2->ShowDialog();
-				this->Close();
-			}
+				Double flightTime = calculateRange();
+				if(flightTime<=10)
+				{
+					page2 ^obj2 = gcnew page2();
+					obj2->ShowDialog();
+					this->Close();
+				}
+				else {
+					MessageBox::Show("Search Coordinates are out of range");
+					page1 ^obj1 = gcnew page1();
+					obj1->ShowDialog();
+				}
+		}	
+		else {
 			MessageBox::Show("Search Coordinates cannot be empty");
 		}
-		
 	}
 
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 
-	
 	private: System::Void Populate_Click(System::Object^  sender, System::EventArgs^  e) {
 		std::string coord;
 		int count = 0;
@@ -261,12 +246,17 @@ namespace Team16UserController {
 
 	}
 private: 
-	System::Void SearchCN_TextChanged(System::Object^  sender, System::EventArgs^  e);
-	//System::Double
-	System::Double degreesToRadians(System::Double);
-	System::Double Team16UserController::page1::calculateDist(System::Double lat, System::Double longi, System::Double u, System::Double v);
+	System::Void SearchCN_TextChanged(System::Object^  sender, System::EventArgs^  e);	
+	System::Double calculateRange();
 
-	System::Boolean calculateTime(System::Double);
+	System::Double degreesToRadians(System::Double);
+	System::Double Team16UserController::page1::calculateDist(double, double, double, double);
+
+	System::Double calculateTime(System::Double);
+
+	System::Void SearchCW_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	}
 
 };
 	}
