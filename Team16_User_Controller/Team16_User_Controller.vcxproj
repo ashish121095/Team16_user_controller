@@ -102,11 +102,13 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_world340d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -122,11 +124,13 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OPENCV_DIR)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies />
+      <AdditionalDependencies>opencv_world340d.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>main</EntryPointSymbol>
+      <AdditionalLibraryDirectories>$(OPENCV_DIR)\x64\vc15\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -137,12 +141,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bmp to Jpeg.cpp" />
     <ClCompile Include="page1.cpp" />
     <ClCompile Include="page2.cpp" />
     <ClCompile Include="page3.cpp" />
     <ClCompile Include="page4.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bmp to Jpeg.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="page1.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -173,6 +181,21 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="tempData.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\..\..\..\Desktop\bmpfiles\BLK.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\BLU.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\FLAG_B24.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\GRN.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\LAND.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\LAND2.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\LAND3.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\MARBLES.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\RAY.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\RED.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\TRU256.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\VENUS.BMP" />
+    <Image Include="..\..\..\..\Desktop\bmpfiles\XING_B24.BMP" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

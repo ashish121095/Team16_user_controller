@@ -13,7 +13,6 @@ System::Void Team16UserController::page4::displayIndividualData(cliext::vector<T
 			Controls->Add(textBox1);
 		}
 	}
-
 }
 
 System::Void Team16UserController::page4::backBtn_Click(System::Object ^ sender, System::EventArgs ^ e)

@@ -5,6 +5,10 @@
 #include "page2.h"
 #include <fstream>
 #include <string>
+#include<math.h>
+#include <cmath>
+#define PI 3.14
+#define earthRadKm 6371.0
 namespace Team16UserController {
 
 	using namespace System;
@@ -24,14 +28,7 @@ namespace Team16UserController {
 		page1(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-		//	std::vector<String>HSigns;
-			//
 		}
-
-	private:
-
 
 	protected:
 		/// <summary>
@@ -47,38 +44,17 @@ namespace Team16UserController {
 	private: System::Windows::Forms::Label^  Instruction;
 	private: System::Windows::Forms::Button^  Next2;
 
-
 	private: System::Windows::Forms::Label^  label1;
 	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::TextBox^  SearchCW;
 
-
-
-
-
-
+	private: System::Windows::Forms::TextBox^  SearchCN;
 	private: System::Windows::Forms::Button^  Save;
 	private: System::Windows::Forms::Label^  StartCN;
 	private: System::Windows::Forms::Label^  StartCW;
 
 
 	private: System::Windows::Forms::Button^  Populate;
-	private: System::Windows::Forms::MaskedTextBox^  SearchCN;
-	private: System::Windows::Forms::MaskedTextBox^  SearchCW;
-	private: System::Windows::Forms::Label^  label3;
-	private: System::Windows::Forms::Label^  label4;
-	private: System::Windows::Forms::Label^  label5;
-
-
-
-
-
-
-
-
-
-	protected:
-
-
 
 	private:
 		/// <summary>
@@ -97,15 +73,12 @@ namespace Team16UserController {
 			this->Next2 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->SearchCW = (gcnew System::Windows::Forms::TextBox());
+			this->SearchCN = (gcnew System::Windows::Forms::TextBox());
 			this->Save = (gcnew System::Windows::Forms::Button());
 			this->StartCN = (gcnew System::Windows::Forms::Label());
 			this->StartCW = (gcnew System::Windows::Forms::Label());
 			this->Populate = (gcnew System::Windows::Forms::Button());
-			this->SearchCN = (gcnew System::Windows::Forms::MaskedTextBox());
-			this->SearchCW = (gcnew System::Windows::Forms::MaskedTextBox());
-			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// Instruction
@@ -126,27 +99,44 @@ namespace Team16UserController {
 			this->Next2->Name = L"Next2";
 			this->Next2->Size = System::Drawing::Size(106, 35);
 			this->Next2->TabIndex = 1;
-			this->Next2->Text = L"Next Page";
+			this->Next2->Text = L"Search";
 			this->Next2->UseVisualStyleBackColor = true;
 			this->Next2->Click += gcnew System::EventHandler(this, &page1::NextPage_Click);
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(7, 175);
+			this->label1->Location = System::Drawing::Point(23, 177);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(157, 17);
+			this->label1->Size = System::Drawing::Size(133, 17);
 			this->label1->TabIndex = 2;
-			this->label1->Text = L"Search Coordinates (N)";
+			this->label1->Text = L"Search Coordinates";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(7, 98);
+			this->label2->Location = System::Drawing::Point(23, 98);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(118, 17);
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Start Coordinates";
+			// 
+			// SearchCW
+			// 
+			this->SearchCW->Location = System::Drawing::Point(170, 200);
+			this->SearchCW->Name = L"SearchCW";
+			this->SearchCW->Size = System::Drawing::Size(100, 22);
+			this->SearchCW->TabIndex = 7;
+			//this->SearchCW->TextChanged += gcnew System::EventHandler(this, &page1::SearchCW_TextChanged);
+			// 
+			// SearchCN
+			// 
+			this->SearchCN->ForeColor = System::Drawing::Color::Black;
+			this->SearchCN->Location = System::Drawing::Point(170, 172);
+			this->SearchCN->Name = L"SearchCN";
+			this->SearchCN->Size = System::Drawing::Size(100, 22);
+			this->SearchCN->TabIndex = 6;
+			//this->SearchCN->TextChanged += gcnew System::EventHandler(this, &page1::SearchCN_TextChanged);
 			// 
 			// Save
 			// 
@@ -184,64 +174,17 @@ namespace Team16UserController {
 			this->Populate->UseVisualStyleBackColor = true;
 			this->Populate->Click += gcnew System::EventHandler(this, &page1::Populate_Click);
 			// 
-			// SearchCN
-			// 
-			this->SearchCN->Location = System::Drawing::Point(170, 172);
-			this->SearchCN->Mask = L"000.00000";
-			this->SearchCN->Name = L"SearchCN";
-			this->SearchCN->Size = System::Drawing::Size(100, 22);
-			this->SearchCN->TabIndex = 12;
-			// 
-			// SearchCW
-			// 
-			this->SearchCW->BeepOnError = true;
-			this->SearchCW->Location = System::Drawing::Point(170, 200);
-			this->SearchCW->Mask = L"000.00000";
-			this->SearchCW->Name = L"SearchCW";
-			this->SearchCW->Size = System::Drawing::Size(100, 22);
-			this->SearchCW->TabIndex = 13;
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(133, 200);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(31, 17);
-			this->label3->TabIndex = 14;
-			this->label3->Text = L"(W)";
-			// 
-			// label4
-			// 
-			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(133, 126);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(31, 17);
-			this->label4->TabIndex = 15;
-			this->label4->Text = L"(W)";
-			// 
-			// label5
-			// 
-			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(133, 98);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(28, 17);
-			this->label5->TabIndex = 16;
-			this->label5->Text = L"(N)";
-			// 
 			// page1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(609, 254);
-			this->Controls->Add(this->label5);
-			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label3);
-			this->Controls->Add(this->SearchCW);
-			this->Controls->Add(this->SearchCN);
 			this->Controls->Add(this->Populate);
 			this->Controls->Add(this->StartCW);
 			this->Controls->Add(this->StartCN);
 			this->Controls->Add(this->Save);
+			this->Controls->Add(this->SearchCW);
+			this->Controls->Add(this->SearchCN);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->Next2);
@@ -254,18 +197,33 @@ namespace Team16UserController {
 		}
 
 #pragma endregion
-
+		//39.782350, -84.066447
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
-		this->Hide();
-		page2 ^obj2 = gcnew page2();
-		obj2->ShowDialog();
-		this->Close();
+	
+		//IMPLEMENT SEARCHCW_TEXTCHAGNED METHOD SEPARATELY
+		if (SearchCN->Text != "" || SearchCW->Text != "") {
+				this->Hide();
+				Double flightTime = calculateRange();
+				if(flightTime<=10)
+				{
+					page2 ^obj2 = gcnew page2();
+					obj2->ShowDialog();
+					this->Close();
+				}
+				else {
+					MessageBox::Show("Search Coordinates are out of range");
+					page1 ^obj1 = gcnew page1();
+					obj1->ShowDialog();
+				}
+		}	
+		else {
+			MessageBox::Show("Search Coordinates cannot be empty");
+		}
 	}
 
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 
-	
 	private: System::Void Populate_Click(System::Object^  sender, System::EventArgs^  e) {
 		std::string coord;
 		int count = 0;
@@ -287,5 +245,18 @@ namespace Team16UserController {
 		}
 
 	}
+private: 
+	System::Void SearchCN_TextChanged(System::Object^  sender, System::EventArgs^  e);	
+	System::Double calculateRange();
+
+	System::Double degreesToRadians(System::Double);
+	System::Double Team16UserController::page1::calculateDist(double, double, double, double);
+
+	System::Double calculateTime(System::Double);
+
+	System::Void SearchCW_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+	}
+
 };
-}
+	}
