@@ -73,8 +73,8 @@ namespace Team16UserController {
 			this->Next2 = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->SearchCW = (gcnew System::Windows::Forms::TextBox());
 			this->SearchCN = (gcnew System::Windows::Forms::TextBox());
+			this->SearchCW = (gcnew System::Windows::Forms::TextBox());
 			this->Save = (gcnew System::Windows::Forms::Button());
 			this->StartCN = (gcnew System::Windows::Forms::Label());
 			this->StartCW = (gcnew System::Windows::Forms::Label());
@@ -121,14 +121,6 @@ namespace Team16UserController {
 			this->label2->TabIndex = 3;
 			this->label2->Text = L"Start Coordinates";
 			// 
-			// SearchCW
-			// 
-			this->SearchCW->Location = System::Drawing::Point(170, 200);
-			this->SearchCW->Name = L"SearchCW";
-			this->SearchCW->Size = System::Drawing::Size(100, 22);
-			this->SearchCW->TabIndex = 7;
-			//this->SearchCW->TextChanged += gcnew System::EventHandler(this, &page1::SearchCW_TextChanged);
-			// 
 			// SearchCN
 			// 
 			this->SearchCN->ForeColor = System::Drawing::Color::Black;
@@ -137,6 +129,20 @@ namespace Team16UserController {
 			this->SearchCN->Size = System::Drawing::Size(100, 22);
 			this->SearchCN->TabIndex = 6;
 			//this->SearchCN->TextChanged += gcnew System::EventHandler(this, &page1::SearchCN_TextChanged);
+			this->SearchCN->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &page1::SearchCN_keyPressed);
+
+			// 
+			// SearchCW
+			// 
+			this->SearchCW->Location = System::Drawing::Point(170, 200);
+			this->SearchCW->Name = L"SearchCW";
+			this->SearchCW->Size = System::Drawing::Size(100, 22);
+			this->SearchCW->TabIndex = 7;
+			//this->SearchCW->TextChanged += gcnew System::EventHandler(this, &page1::SearchCW_TextChanged);
+			this->SearchCW->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &page1::SearchCW_keyPressed);
+
+			
+
 			// 
 			// Save
 			// 
@@ -199,11 +205,13 @@ namespace Team16UserController {
 #pragma endregion
 		//39.782350, -84.066447
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
-	
+		System::Windows::Forms::KeyPressEventArgs ^ keyPress;
 		//IMPLEMENT SEARCHCW_TEXTCHAGNED METHOD SEPARATELY
 		if (SearchCN->Text != "" || SearchCW->Text != "") {
 				this->Hide();
 				Double flightTime = calculateRange();
+				/*searchCN_KeyPress(sender);
+				searchCW_KeyPress(sender, keyPress);*/
 				if(flightTime<=10)
 				{
 					page2 ^obj2 = gcnew page2();
@@ -245,18 +253,19 @@ namespace Team16UserController {
 		}
 
 	}
-private: 
-	System::Void SearchCN_TextChanged(System::Object^  sender, System::EventArgs^  e);	
-	System::Double calculateRange();
+private: /*
+	System::Void searchCN_KeyPress(System::Object^  sender);
+	System::Void searchCW_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e);
+*/
+	/*System::Void SearchCN_TextChanged(System::Object^  sender, System::EventArgs^  e);	
+	System::Void SearchCW_TextChanged(System::Object^  sender, System::EventArgs^  e);*/
+	System::Void SearchCN_keyPressed(Object^ sender, KeyPressEventArgs^ e);
+	System::Void SearchCW_keyPressed(Object^ sender, KeyPressEventArgs^ e);
 
+	System::Double calculateRange();
 	System::Double degreesToRadians(System::Double);
 	System::Double Team16UserController::page1::calculateDist(double, double, double, double);
-
 	System::Double calculateTime(System::Double);
-
-	System::Void SearchCW_TextChanged(System::Object^  sender, System::EventArgs^  e) {
-
-	}
 
 };
 	}

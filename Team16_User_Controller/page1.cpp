@@ -1,12 +1,14 @@
 #include "page1.h"
 #include "page3.h"
 #include <cliext\vector>
-//#using <System.dll>
+
 using namespace System;
 using namespace System::Windows::Forms;
 using namespace System::IO;
 using namespace std;
+using namespace System::Text::RegularExpressions;
 [STAThreadAttribute]
+
 int main(cli::array < System::String^ > ^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
@@ -16,11 +18,37 @@ int main(cli::array < System::String^ > ^ args) {
 	return 0;
 }
 
-/*Determine the range of search coordinates */
-System::Void Team16UserController::page1::SearchCN_TextChanged(System::Object ^ sender, System::EventArgs ^ e)
+/*Allows operator to input only valid inputs (allows only numbers, negative sign, and dot(.) DOES NOT allow any other character)*/
+System::Void Team16UserController::page1::SearchCN_keyPressed(Object ^ sender, KeyPressEventArgs^ e)
 {
+	if (!(Char::IsDigit(e->KeyChar) || e->KeyChar == (Char)Keys::Back || e->KeyChar == '.' || e->KeyChar == '-'))
+	{
+		e->Handled = true;
+	}
+	TextBox^ txtDecimal = SearchCN;
+	if (e->KeyChar == '.' && txtDecimal->Text->Contains("."))
+	{
+		e->Handled = true;
+	}
+	
 }
 
+/*Allows operator to input only valid inputs (allows only numbers, negative sign, and dot(.) DOES NOT allow any other character)*/
+System::Void Team16UserController::page1::SearchCW_keyPressed(Object ^ sender, KeyPressEventArgs ^ e)
+{
+	if (!(Char::IsDigit(e->KeyChar) || e->KeyChar == (Char)Keys::Back || e->KeyChar == '.' || e->KeyChar == '-'))
+	{
+		e->Handled = true;
+	}
+	TextBox^ txtDecimal = SearchCW;
+	if (e->KeyChar == '.' && txtDecimal->Text->Contains("."))
+	{
+		e->Handled = true;
+	}
+	
+}
+
+/*Determine the range of search coordinates */
 System::Double Team16UserController::page1::calculateRange()
 {
 	double timeLimit;
