@@ -1,12 +1,13 @@
 #pragma once
 
 #include <vector>
-
 #include "page2.h"
 #include <fstream>
 #include <string>
 #include<math.h>
 #include <cmath>
+#include <sys/types.h>
+#include <sys/stat.h>
 #define PI 3.14
 #define earthRadKm 6371.0
 namespace Team16UserController {
@@ -207,26 +208,36 @@ namespace Team16UserController {
 	private: System::Void NextPage_Click(System::Object^  sender, System::EventArgs^  e) {
 		System::Windows::Forms::KeyPressEventArgs ^ keyPress;
 		//IMPLEMENT SEARCHCW_TEXTCHAGNED METHOD SEPARATELY
-		if (SearchCN->Text != "" || SearchCW->Text != "") {
-				this->Hide();
-				Double flightTime = calculateRange();
-				/*searchCN_KeyPress(sender);
-				searchCW_KeyPress(sender, keyPress);*/
-				if(flightTime<=10)
-				{
-					page2 ^obj2 = gcnew page2();
-					obj2->ShowDialog();
-					this->Close();
+	
+
+
+			if (SearchCN->Text != "" || SearchCW->Text != "") {
+				if (Directory::Exists("D:\\")) {
+
+					this->Hide();
+					Double flightTime = calculateRange();
+					/*searchCN_KeyPress(sender);
+					searchCW_KeyPress(sender, keyPress);*/
+					if (flightTime <= 10)
+					{
+						page2 ^obj2 = gcnew page2();
+						obj2->ShowDialog();
+						this->Close();
+					}
+					else {
+						MessageBox::Show("Search Coordinates are out of range");
+						page1 ^obj1 = gcnew page1();
+						obj1->ShowDialog();
+					}
 				}
 				else {
-					MessageBox::Show("Search Coordinates are out of range");
-					page1 ^obj1 = gcnew page1();
-					obj1->ShowDialog();
+					MessageBox::Show("Directory Does not Exist!");
+
 				}
-		}	
-		else {
-			MessageBox::Show("Search Coordinates cannot be empty");
-		}
+			}
+			else {
+				MessageBox::Show("Search Coordinates cannot be empty");
+			}
 	}
 
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {
@@ -253,12 +264,7 @@ namespace Team16UserController {
 		}
 
 	}
-private: /*
-	System::Void searchCN_KeyPress(System::Object^  sender);
-	System::Void searchCW_KeyPress(System::Object^  sender, System::Windows::Forms::KeyPressEventArgs^  e);
-*/
-	/*System::Void SearchCN_TextChanged(System::Object^  sender, System::EventArgs^  e);	
-	System::Void SearchCW_TextChanged(System::Object^  sender, System::EventArgs^  e);*/
+private: 
 	System::Void SearchCN_keyPressed(Object^ sender, KeyPressEventArgs^ e);
 	System::Void SearchCW_keyPressed(Object^ sender, KeyPressEventArgs^ e);
 
@@ -266,6 +272,5 @@ private: /*
 	System::Double degreesToRadians(System::Double);
 	System::Double Team16UserController::page1::calculateDist(double, double, double, double);
 	System::Double calculateTime(System::Double);
-
 };
 	}
