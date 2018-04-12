@@ -143,12 +143,12 @@ namespace Team16UserController {
 		}
 #pragma endregion
 	private: System::Void Save_Click(System::Object^  sender, System::EventArgs^  e) {
-		cliext::vector<Team16UserController::node^>dData;
-		this->Hide();
-		page3 ^obj3 = gcnew page3(dData);
-		//obj3->Size= System::Drawing::Size(300, 300);
-		obj3->ShowDialog();
-		this->Close();
+		
+			cliext::vector<Team16UserController::node^>dData;
+			this->Hide();
+			page3 ^obj3 = gcnew page3(dData);
+			obj3->ShowDialog();
+			this->Close();
 	}
 };
 }

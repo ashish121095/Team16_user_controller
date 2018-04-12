@@ -212,7 +212,7 @@ namespace Team16UserController {
 
 
 			if (SearchCN->Text != "" || SearchCW->Text != "") {
-				if (Directory::Exists("D:\\")) {
+				if (Directory::Exists("C:\\")) {
 
 					this->Hide();
 					Double flightTime = calculateRange();
