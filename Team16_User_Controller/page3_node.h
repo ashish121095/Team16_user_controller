@@ -9,6 +9,8 @@ namespace Team16UserController {
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Collections::Generic;
+	/*
+	node class to hold recieved gps, time, altitude and speed data from a micro SD card*/
 	public ref class node {
 
 	public:
@@ -18,13 +20,10 @@ namespace Team16UserController {
 		String^ altitude;
 		String^ speed;
 		node();
-	//	node(System::String ^, System::String ^, System::String ^, System::String ^);
 		~node();
 		cliext::vector<node^>v;
 
 		static cliext::vector<node^> readFromFile(std::string filename, cliext::vector<node^>v);
-
-
 	};
 }
 

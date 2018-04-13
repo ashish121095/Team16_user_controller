@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "page2.h"
+#include "Bmp to Jpeg.h"
 #include <fstream>
 #include <string>
 #include<math.h>
@@ -56,6 +57,7 @@ namespace Team16UserController {
 
 
 	private: System::Windows::Forms::Button^  Populate;
+	private: System::Windows::Forms::Button^  button1;
 
 	private:
 		/// <summary>
@@ -80,6 +82,7 @@ namespace Team16UserController {
 			this->StartCN = (gcnew System::Windows::Forms::Label());
 			this->StartCW = (gcnew System::Windows::Forms::Label());
 			this->Populate = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// Instruction
@@ -129,9 +132,7 @@ namespace Team16UserController {
 			this->SearchCN->Name = L"SearchCN";
 			this->SearchCN->Size = System::Drawing::Size(100, 22);
 			this->SearchCN->TabIndex = 6;
-			//this->SearchCN->TextChanged += gcnew System::EventHandler(this, &page1::SearchCN_TextChanged);
 			this->SearchCN->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &page1::SearchCN_keyPressed);
-
 			// 
 			// SearchCW
 			// 
@@ -139,11 +140,7 @@ namespace Team16UserController {
 			this->SearchCW->Name = L"SearchCW";
 			this->SearchCW->Size = System::Drawing::Size(100, 22);
 			this->SearchCW->TabIndex = 7;
-			//this->SearchCW->TextChanged += gcnew System::EventHandler(this, &page1::SearchCW_TextChanged);
 			this->SearchCW->KeyPress += gcnew System::Windows::Forms::KeyPressEventHandler(this, &page1::SearchCW_keyPressed);
-
-			
-
 			// 
 			// Save
 			// 
@@ -181,11 +178,22 @@ namespace Team16UserController {
 			this->Populate->UseVisualStyleBackColor = true;
 			this->Populate->Click += gcnew System::EventHandler(this, &page1::Populate_Click);
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(457, 76);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(106, 38);
+			this->button1->TabIndex = 12;
+			this->button1->Text = L"BmpToJpg";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &page1::button1_Click);
+			// 
 			// page1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(609, 254);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->Populate);
 			this->Controls->Add(this->StartCW);
 			this->Controls->Add(this->StartCN);
@@ -252,11 +260,11 @@ namespace Team16UserController {
 			{
 				if (count == 0)
 				{
-					StartCN->Text = gcnew String(coord.c_str());
+					StartCN->Text = gcnew System::String(coord.c_str());
 				}
 				else 
 				{
-					StartCW->Text = gcnew String(coord.c_str());
+					StartCW->Text = gcnew System::String(coord.c_str());
 				}
 				count++;
 			}
@@ -265,6 +273,7 @@ namespace Team16UserController {
 
 	}
 private: 
+	
 	System::Void SearchCN_keyPressed(Object^ sender, KeyPressEventArgs^ e);
 	System::Void SearchCW_keyPressed(Object^ sender, KeyPressEventArgs^ e);
 
@@ -272,5 +281,14 @@ private:
 	System::Double degreesToRadians(System::Double);
 	System::Double Team16UserController::page1::calculateDist(double, double, double, double);
 	System::Double calculateTime(System::Double);
+	/*Sources
+	-https://stackoverflow.com/questions/5768613/c-cli-how-to-open-a-new-form-and-back?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+	*/
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	this->Hide();
+	BmptoJpeg ^obj = gcnew BmptoJpeg();
+	obj->ShowDialog();
+}
+
 };
 	}

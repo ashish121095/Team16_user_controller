@@ -19,6 +19,10 @@ int main(cli::array < System::String^ > ^ args) {
 }
 
 /*Allows operator to input only valid inputs (allows only numbers, negative sign, and dot(.) DOES NOT allow any other character)*/
+/*Sources
+-https://msdn.microsoft.com/en-us/library/system.windows.forms.control.keypress(v=vs.110).aspx
+-https://social.msdn.microsoft.com/Forums/windows/en-US/c8dfd42d-2dca-471f-988d-8afd9348d0f0/default-enter-key-press-event-in-c-cli?forum=winformsapplications
+*/
 System::Void Team16UserController::page1::SearchCN_keyPressed(Object ^ sender, KeyPressEventArgs^ e)
 {
 	if (!(Char::IsDigit(e->KeyChar) || e->KeyChar == (Char)Keys::Back || e->KeyChar == '.' || e->KeyChar == '-'))
@@ -34,6 +38,10 @@ System::Void Team16UserController::page1::SearchCN_keyPressed(Object ^ sender, K
 }
 
 /*Allows operator to input only valid inputs (allows only numbers, negative sign, and dot(.) DOES NOT allow any other character)*/
+/*Sources
+-https://msdn.microsoft.com/en-us/library/system.windows.forms.control.keypress(v=vs.110).aspx
+-https://social.msdn.microsoft.com/Forums/windows/en-US/c8dfd42d-2dca-471f-988d-8afd9348d0f0/default-enter-key-press-event-in-c-cli?forum=winformsapplications
+*/
 System::Void Team16UserController::page1::SearchCW_keyPressed(Object ^ sender, KeyPressEventArgs ^ e)
 {
 	if (!(Char::IsDigit(e->KeyChar) || e->KeyChar == (Char)Keys::Back || e->KeyChar == '.' || e->KeyChar == '-'))
@@ -48,7 +56,13 @@ System::Void Team16UserController::page1::SearchCW_keyPressed(Object ^ sender, K
 	
 }
 
-/*Determine the range of search coordinates */
+/*Determine the range of search coordinates 
+Used Haversine Formula to calculate distance between starting GPS coordinates to search GPS coordinates.
+
+Sources
+-https://en.wikipedia.org/wiki/Haversine_formula
+-https://www.movable-type.co.uk/scripts/latlong.html
+*/
 System::Double Team16UserController::page1::calculateRange()
 {
 	double timeLimit;
@@ -74,6 +88,11 @@ System::Double Team16UserController::page1::calculateRange()
 
 
 /*calculate distance between to coordinates using Haversine formula */
+/*
+Sources
+-https://en.wikipedia.org/wiki/Haversine_formula
+-https://www.movable-type.co.uk/scripts/latlong.html
+*/
 System::Double Team16UserController::page1::calculateDist(double dLat, double dlat1, double dlat2, double dLong)
 {
 	double aHarv = pow(sin(dLat / 2.0), 2.0) + cos(dlat1)*cos(dlat2)*pow(sin(dLong / 2), 2);
@@ -84,6 +103,10 @@ System::Double Team16UserController::page1::calculateDist(double dLat, double dl
 }
 
 /*Convert degrees into radians for easeness*/
+/*
+Sources
+-https://www.rapidtables.com/convert/number/radians-to-degrees.html
+*/
 System::Double Team16UserController::page1::degreesToRadians(System::Double deg)
 {
 		return deg * (PI/180);

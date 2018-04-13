@@ -1,5 +1,6 @@
 #pragma once
-
+#include "opencv\cv.h"
+#include "opencv2\opencv.hpp"
 namespace Team16UserController {
 
 	using namespace System;
@@ -8,6 +9,9 @@ namespace Team16UserController {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace System::Drawing::Imaging; // for ImageFormat class
+	using namespace cv;
+
 
 	/// <summary>
 	/// Summary for BmptoJpeg
@@ -40,6 +44,8 @@ namespace Team16UserController {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+		PictureBox^ pictureBox1;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -48,12 +54,27 @@ namespace Team16UserController {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			pictureBox1 = gcnew PictureBox;
 			this->components = gcnew System::ComponentModel::Container();
 			this->Size = System::Drawing::Size(300,300);
 			this->Text = L"BmptoJpeg";
 			this->Padding = System::Windows::Forms::Padding(0);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			pictureBox1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BmptoJpeg::OnPaint);
+			this->Controls->Add(pictureBox1);
+
 		}
 #pragma endregion
+
+		System::Void convertBmptoJpeg();
+	public:
+		System::Void BmptoJpeg::OnPaint(Object^,PaintEventArgs^ pe) override
+		{
+			convertBmptoJpeg();
+			Graphics^ g = pe->Graphics;
+			Image^ image = Image::FromFile("C:\\Users\\ashish\\Desktop\\bmpfiles\\img3.jpg");
+			Form::ClientSize = image->Size;
+			g->DrawImage(image, 10, 10, image->Size.Width, image->Size.Height);
+		}
 	};
 }

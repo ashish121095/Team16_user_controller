@@ -26,7 +26,6 @@ namespace Team16UserController {
 		{
 			droneData = dData;
 			hsign = str;
-			//pos=val;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here

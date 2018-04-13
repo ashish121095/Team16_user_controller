@@ -133,17 +133,12 @@ namespace Team16UserController {
 #pragma endregion	 		
 	public:
 		System::Void displayData(); 
-		//System::Void newButton_Click(System::Object^  sender, System::EventArgs^  e);
 
 	private: System::Void panel1_Paint(System::Object^  sender, System::Windows::Forms::PaintEventArgs^  e) {
 	}
 	private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
 	}
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-		/*this->Hide();
-		page4^ obj4 = gcnew page4(dData, 0);
-		obj4->ShowDialog();
-		this->Close();*/
 	}
 private: System::Void HeatSignatures_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
 }

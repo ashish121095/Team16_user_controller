@@ -17,17 +17,14 @@ Team16UserController::node::node() {
 	time = nullptr;
 	altitude = nullptr;
 }
-//Team16UserController::node::node(System::String ^ dtime, System::String ^ dGps, System::String ^ dSpeed, System::String ^ dAltitude) {
-//	gps = dGps;
-//	time = dtime;
-//	speed = dSpeed;;
-//	altitude = dAltitude;
-//}
 
 Team16UserController::node::~node()
 {
 }
- 
+ /*Reads data from a file into nodes of vector
+ Sources
+ -https://msdn.microsoft.com/en-us/library/bb386284.aspx
+ */
 
 cliext::vector<Team16UserController::node^> Team16UserController::node::readFromFile(std::string filename, cliext::vector<node^> v)
 {
@@ -54,12 +51,10 @@ cliext::vector<Team16UserController::node^> Team16UserController::node::readFrom
 	}
 	return v;
 }
-
+/*Display Data based on user selection*/
 System::Void Team16UserController::page3::displayData() {
 
 	dData = Team16UserController::node::readFromFile("tempData.txt", dData);
-	//Object[] ItemObject = gcnew Object[dData.size];
-
 	for (int i = 0; i < dData.size(); i++) {
 		
 		this->HeatSignatures->Items->Add("Heat Signature "+(i+1));
@@ -75,44 +70,3 @@ System::Void Team16UserController::page3::displayBtn_Click(System::Object ^ send
 
 }
 
-
-
-
-//System::Void Team16UserController::page3::newButton_Click(System::Object ^ sender, System::EventArgs ^ e)
-//{
-//	for (int i = 0; i < btns->Length; i++) {
-//
-//		if (btns[i]->Text == "Heat Signature "+(i+1)) {
-//			this->Hide();
-//			page4^ obj4 = gcnew page4(dData, i);
-//			obj4->ShowDialog();
-//			this->Close();
-//		}
-//	}
-//
-//}
-
-/*int width = 138;
-int height = 55;
-int x = 189;
-int y = 134;*/
-
-//this->newButton = (gcnew System::Windows::Forms::Button());
-
-//this->newButton->Location = System::Drawing::Point(x, y);
-//this->newButton->Name = L"button" + (++i);
-//this->newButton->Size = System::Drawing::Size(width, height);
-//this->newButton->TabIndex = 1;
-//this->newButton->Text = L"Heat Signature " + i;
-//this->newButton->UseVisualStyleBackColor = true;
-//i--;
-////System::Console::Write(btns);
-//btns[i] = newButton;
-
-//y = y + height + 10;
-
-
-/*for (int j = 0; j < btns->Length;j++) {
-this->Controls->Add(btns[j]);
-
-}*/

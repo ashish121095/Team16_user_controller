@@ -1,5 +1,9 @@
 #include "page4.h"
 
+/*Display Individual data of each heat signature
+Sources
+-https://msdn.microsoft.com/en-us/library/dtbydz1t.aspx
+*/
 System::Void Team16UserController::page4::displayIndividualData(cliext::vector<Team16UserController::node^>dData)
 {	
 	for (int k = 0; k < dData.size();k++) {
