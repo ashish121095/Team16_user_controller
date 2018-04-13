@@ -1,8 +1,7 @@
 #pragma once
 
-#include <vector>
 #include "page2.h"
-#include "Bmp to Jpeg.h"
+//#include "Bmp to Jpeg.h"
 #include <fstream>
 #include <string>
 #include<math.h>
@@ -285,9 +284,10 @@ private:
 	-https://stackoverflow.com/questions/5768613/c-cli-how-to-open-a-new-form-and-back?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 	*/
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-	this->Hide();
+	MessageBox::Show("It has not been implemented yet");
+	/*this->Hide();
 	BmptoJpeg ^obj = gcnew BmptoJpeg();
-	obj->ShowDialog();
+	obj->ShowDialog();*/
 }
 
 };
