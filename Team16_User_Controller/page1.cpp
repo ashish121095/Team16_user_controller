@@ -115,8 +115,6 @@ System::Double Team16UserController::page1::degreesToRadians(System::Double deg)
 /*This function decide the flight time based on distance to see if drone is going to make it back or not.*/
 System::Double Team16UserController::page1::calculateTime(System::Double distance)
 {
-	// need to implement this function
-	
 	Double minSpeed = 2.0; //meter per second
 	Double time; //time in Minutes
 	Double timeSec; // time in seconds
