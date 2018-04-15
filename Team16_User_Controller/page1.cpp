@@ -98,8 +98,6 @@ System::Double Team16UserController::page1::calculateDist(double dLat, double dl
 	double aHarv = pow(sin(dLat / 2.0), 2.0) + cos(dlat1)*cos(dlat2)*pow(sin(dLong / 2), 2);
 	double cHarv = 2 * atan2(sqrt(aHarv), sqrt(1.0 - aHarv));
 	return cHarv * earthRadKm;
-	/*return 2.0 * earthRadKm * asin(sqrt(u * u + cos(startLat) * cos(searchLat) * v * v));*/
-
 }
 
 /*Convert degrees into radians for easeness*/
